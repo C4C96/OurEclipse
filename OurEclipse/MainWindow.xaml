@@ -5,8 +5,80 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:OurEclipse"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Title="Our Eclipse" Height="450" Width="800">
+    <DockPanel LastChildFill="True">
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="文件" >
+                <MenuItem Header="新建"/>
+                <MenuItem Header="打开"/>
+                <Separator />
+                <MenuItem Header="保存"/>
+                <MenuItem Header="另存为"/>
+                <Separator />
+                <MenuItem Header="退出"/>
+            </MenuItem>
+            <MenuItem Header="编辑">
+                <MenuItem Header="查找"/>
+                <MenuItem Header="替换"/>
+                <Separator />
+                <MenuItem Header="撤销"/>
+                <MenuItem Header="重复"/>
+                <Separator />
+                <MenuItem Header="剪切"/>
+                <MenuItem Header="复制"/>
+                <MenuItem Header="粘贴"/>
+                <Separator />
+                <MenuItem Header="全选"/>
+            </MenuItem>
+            <MenuItem Header="帮助">
+                <MenuItem Header="关于"/>
+            </MenuItem>
+        </Menu>
+        <ToolBarTray DockPanel.Dock="Top">
+            <ToolBar>
+                <Button Content="新建" ToolTip="This is a tooltip."/>
+                <Button Content="打开"/>
+                <Button Content="保存"/>
+                <Button Content="另存为"/>
+                <Separator />
+                <Button Content="撤销"/>
+                <Button Content="重做"/>
+            </ToolBar>
+            <ToolBar>
+                <Button Content="剪切"/>
+                <Button Content="复制"/>
+                <Button Content="粘贴"/>
+                <Separator />
+                <Button Content="注释"/>
+                <Button Content="取消注释"/>
+            </ToolBar>
+        </ToolBarTray>
+        <StatusBar DockPanel.Dock="Bottom" VerticalAlignment="Bottom">
+            <StatusBarItem Content="StatusBar" Width="100"/>
+            <Separator />
+            <StatusBarItem HorizontalAlignment="Right">
+                <StackPanel Orientation="Horizontal">
+                    <StatusBarItem Content="    行 "/>
+                    <StatusBarItem Content="1"/>
+                    <StatusBarItem Content="    列 "/>
+                    <StatusBarItem Content="1"/>
+                    <StatusBarItem Content="     字符 "/>
+                    <StatusBarItem Content="1"/>
+                    <StatusBarItem Content="          "/>
+                    <StatusBarItem Content="Ins"/>
+                    <StatusBarItem Content="       "/>
+                </StackPanel>
+            </StatusBarItem>
+        </StatusBar>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="3*" MinHeight="100"/>
+                <RowDefinition Height="5"/>
+                <RowDefinition Height="1*" MinHeight="100"/>
+            </Grid.RowDefinitions>
+            <TextBox Grid.Row="0" AcceptsReturn="True" AcceptsTab="True" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" />
+            <GridSplitter Grid.Row="1" Height="5" HorizontalAlignment="Stretch"/>
+            <TextBox Grid.Row="2" IsReadOnly="True" VerticalScrollBarVisibility="Auto" Text="Output infomation" />            
+        </Grid>
+    </DockPanel>
 </Window>
