@@ -68,6 +68,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MainWindowImpl.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -92,6 +93,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icon\CommentCode_16x.png" />
+    <Resource Include="icon\Copy_16x.png" />
+    <Resource Include="icon\Cut_16x.png" />
+    <Resource Include="icon\NewFile_16x.png" />
+    <Resource Include="icon\OpenFolder_16x.png" />
+    <Resource Include="icon\Paste_16x.png" />
+    <Resource Include="icon\Redo_16x.png" />
+    <Resource Include="icon\Redo_grey_16x.png" />
+    <Resource Include="icon\SaveAs_16x.png" />
+    <Resource Include="icon\Save_16x.png" />
+    <Resource Include="icon\UncommentCode_16x.png" />
+    <Resource Include="icon\Undo_16x.png" />
+    <Resource Include="icon\Undo_grey_16x.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -6,51 +6,100 @@
         xmlns:local="clr-namespace:OurEclipse"
         mc:Ignorable="d"
         Title="Our Eclipse" Height="450" Width="800">
+    <Window.Resources>
+        <RoutedUICommand x:Key="Comment" Text="注释"/>
+        <RoutedUICommand x:Key="Uncomment" Text="取消注释"/>
+    </Window.Resources>
+    <Window.InputBindings>
+        <KeyBinding Gesture="Ctrl+Alt+S" Command="SaveAs"/>
+        <KeyBinding Gesture="Alt+F4" Command="Close"/>
+    </Window.InputBindings>
+    <Window.CommandBindings>
+        <CommandBinding Command="New" CanExecute="CommandCanExecute" Executed="CommandExecute"/>
+        <CommandBinding Command="Open" CanExecute="CommandCanExecute" Executed="CommandExecute"/>
+        <CommandBinding Command="Save" CanExecute="CommandCanExecute" Executed="CommandExecute"/>
+        <CommandBinding Command="SaveAs" CanExecute="CommandCanExecute" Executed="CommandExecute"/>
+        <CommandBinding Command="Close" CanExecute="CommandCanExecute" Executed="CommandExecute"/>
+
+        <CommandBinding Command="Find" CanExecute="CommandCanExecute" Executed="CommandExecute"/>
+        <CommandBinding Command="Replace" CanExecute="CommandCanExecute" Executed="CommandExecute"/>
+        <CommandBinding Command="Undo" CanExecute="CommandCanExecute" Executed="CommandExecute"/>
+        <CommandBinding Command="Redo" CanExecute="CommandCanExecute" Executed="CommandExecute"/>
+        <CommandBinding Command="Cut" CanExecute="CommandCanExecute" Executed="CommandExecute"/>
+        <CommandBinding Command="Copy" CanExecute="CommandCanExecute" Executed="CommandExecute"/>
+        <CommandBinding Command="Paste" CanExecute="CommandCanExecute" Executed="CommandExecute"/>
+        <CommandBinding Command="SelectAll" CanExecute="CommandCanExecute" Executed="CommandExecute"/>
+
+        <CommandBinding Command="{StaticResource Comment}" CanExecute="CommandCanExecute" Executed="CommandExecute"/>
+        <CommandBinding Command="{StaticResource Uncomment}" CanExecute="CommandCanExecute" Executed="CommandExecute"/>
+    </Window.CommandBindings>
     <DockPanel LastChildFill="True">
         <Menu DockPanel.Dock="Top">
-            <MenuItem Header="文件" >
-                <MenuItem Header="新建"/>
-                <MenuItem Header="打开"/>
+            <MenuItem Header="文件(_F)" >
+                <MenuItem Header="新建(_N)" Command="New"/>
+                <MenuItem Header="打开(_O)..." Command="Open"/>
                 <Separator />
-                <MenuItem Header="保存"/>
-                <MenuItem Header="另存为"/>
+                <MenuItem Header="保存(_S)" Command="Save"/>
+                <MenuItem Header="另存为(_A)..." Command="SaveAs" InputGestureText="Ctrl+Alt+S"/>
                 <Separator />
-                <MenuItem Header="退出"/>
+                <MenuItem Header="退出(_X)" Command="Close" InputGestureText="Alt+F4"/>
             </MenuItem>
-            <MenuItem Header="编辑">
-                <MenuItem Header="查找"/>
-                <MenuItem Header="替换"/>
+            <MenuItem Header="编辑(_E)">
+                <MenuItem Header="查找(_F)..." Command="Find"/>
+                <MenuItem Header="替换(_R)..." Command="Replace"/>
                 <Separator />
-                <MenuItem Header="撤销"/>
-                <MenuItem Header="重复"/>
+                <MenuItem Header="撤销(_U)" Command="Undo"/>
+                <MenuItem Header="重复(_R)" Command="Redo"/>
                 <Separator />
-                <MenuItem Header="剪切"/>
-                <MenuItem Header="复制"/>
-                <MenuItem Header="粘贴"/>
+                <MenuItem Header="剪切(_T)" Command="Cut"/>
+                <MenuItem Header="复制(_C)" Command="Copy"/>
+                <MenuItem Header="粘贴(_P)" Command="Paste"/>
                 <Separator />
-                <MenuItem Header="全选"/>
+                <MenuItem Header="全选(_A)" Command="SelectAll"/>
             </MenuItem>
-            <MenuItem Header="帮助">
-                <MenuItem Header="关于"/>
+            <MenuItem Header="帮助(_H)">
+                <MenuItem Header="关于(_A)..."/>
             </MenuItem>
         </Menu>
         <ToolBarTray DockPanel.Dock="Top">
             <ToolBar>
-                <Button Content="新建" ToolTip="This is a tooltip."/>
-                <Button Content="打开"/>
-                <Button Content="保存"/>
-                <Button Content="另存为"/>
+                <Button ToolTip="新建(Ctrl+N)" Command="New">
+                    <Image Source="icon/NewFile_16x.png"/>
+                </Button>
+                <Button ToolTip="打开(Ctrl+O)" Command="Open">
+                    <Image Source="icon/OpenFolder_16x.png"/>
+                </Button>
+                <Button ToolTip="保存(Ctrl+S)" Command="Save">
+                    <Image Source="icon/Save_16x.png"/>
+                </Button>
+                <Button ToolTip="另存为(Ctrl+Alt+S)" Command="SaveAs">
+                    <Image Source="icon/SaveAs_16x.png"/>
+                </Button>
                 <Separator />
-                <Button Content="撤销"/>
-                <Button Content="重做"/>
+                <Button ToolTip="撤销(Ctrl+Z)" Command="Undo">
+                    <Image Source="icon/Undo_16x.png"/>
+                </Button>
+                <Button ToolTip="重做(Ctrl+Y)" Command="Redo">
+                    <Image Source="icon/Redo_16x.png"/>
+                </Button>
             </ToolBar>
             <ToolBar>
-                <Button Content="剪切"/>
-                <Button Content="复制"/>
-                <Button Content="粘贴"/>
+                <Button ToolTip="剪切(Ctrl+X)" Command="Cut">
+                    <Image Source="icon/Cut_16x.png"/>
+                </Button>
+                <Button ToolTip="复制(Ctrl+C)" Command="Copy">
+                    <Image Source="icon/Copy_16x.png"/>
+                </Button>
+                <Button ToolTip="粘贴(Ctrl+V)" Command="Paste">
+                    <Image Source="icon/Paste_16x.png"/>
+                </Button>
                 <Separator />
-                <Button Content="注释"/>
-                <Button Content="取消注释"/>
+                <Button ToolTip="注释" Command="{StaticResource Comment}">
+                    <Image Source="icon/CommentCode_16x.png"/>
+                </Button>
+                <Button ToolTip="取消注释" Command="{StaticResource Uncomment}">
+                    <Image Source="icon/UnCommentCode_16x.png"/>
+                </Button>
             </ToolBar>
         </ToolBarTray>
         <StatusBar DockPanel.Dock="Bottom" VerticalAlignment="Bottom">
