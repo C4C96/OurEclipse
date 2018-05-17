@@ -26,7 +26,6 @@ namespace CodeBoxControl
 		/// </summary>
 		private CodeBoxRenderInfo renderinfo = new CodeBoxRenderInfo();
 
-
 		/// <summary>
 		/// Has the scroll event on the scrollviewer been enabled.
 		/// </summary>
@@ -45,7 +44,7 @@ namespace CodeBoxControl
 			renderTimer.Interval = TimeSpan.FromMilliseconds(50);
 			InitializeComponent();
 			this.AcceptsReturn = true;
-			this.InvalidateVisual();
+			this.AcceptsTab = true;
 		}
 
 		void renderTimer_Tick(object sender, EventArgs e)
@@ -118,9 +117,8 @@ namespace CodeBoxControl
 		void txtTest_TextChanged(object sender, TextChangedEventArgs e)
 		{
 			this.InvalidateVisual();
-			
 		}
-		
+
 		private List<Decoration> mDecorations = new List<Decoration>();
 		/// <summary>
 		/// List of the Decorative attributes assigned to the text
@@ -184,7 +182,7 @@ namespace CodeBoxControl
 		{
 			drawingContext.PushClip(new RectangleGeometry(new Rect(0, 0, this.ActualWidth, this.ActualHeight)));//restrict drawing to textbox
 			drawingContext.DrawRectangle(CodeBoxBackground, null, new Rect(0, 0, this.ActualWidth, this.ActualHeight));//Draw Background
-			if (this.Text == "") return;
+			//if (this.Text == "") return;
 
 			int firstLine = GetFirstVisibleLineIndex();// GetFirstLine();
 			int firstChar = (firstLine == 0) ? 0 : GetCharacterIndexFromLineIndex(firstLine);// GetFirstChar();
@@ -750,7 +748,7 @@ namespace CodeBoxControl
 			breakChars.CopyTo(MinPositions);
 			return MinPositions;
 		}
-		
+
 		/// <summary>
 		/// Returns the character positions that the textbox declares to begin the 
 		/// visible lines.

@@ -111,7 +111,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CodeBoxControl\CodeBoxControl.csproj">
-      <Project>{9964a0bc-180b-4703-bb03-04dbe045534e}</Project>
+      <Project>{46801fc4-93a9-4af9-aae1-c01c6c09932f}</Project>
       <Name>CodeBoxControl</Name>
     </ProjectReference>
     <ProjectReference Include="..\Compiler\Compiler.csproj">
