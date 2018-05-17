@@ -125,7 +125,7 @@
                 <RowDefinition Height="5"/>
                 <RowDefinition Height="1*" MinHeight="100"/>
             </Grid.RowDefinitions>
-            <TextBox Grid.Row="0" AcceptsReturn="True" AcceptsTab="True" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" />
+            <local:CodeEditor Grid.Row="0"/>
             <GridSplitter Grid.Row="1" Height="5" HorizontalAlignment="Stretch"/>
             <TextBox Grid.Row="2" IsReadOnly="True" VerticalScrollBarVisibility="Auto" Text="Output infomation" />            
         </Grid>
