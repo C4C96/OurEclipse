@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{2ADABF2A-AF64-4231-A757-43A94E773D8F}</ProjectGuid>
+    <ProjectGuid>{9964A0BC-180B-4703-BB03-04DBE045534E}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>OurEclipse</RootNamespace>
-    <AssemblyName>OurEclipse</AssemblyName>
+    <RootNamespace>CodeBoxControl</RootNamespace>
+    <AssemblyName>CodeBoxControl</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -50,25 +50,46 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <ApplicationDefinition Include="App.xaml">
+    <Compile Include="App.xaml.cs" />
+    <Compile Include="MainWindow.xaml.cs" />
+    <Compile Include="StackedRectangleGeometryHelper.cs" />
+    <Page Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </ApplicationDefinition>
+    </Page>
+    <Page Include="CodeBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="CodeBox.xaml.cs">
+      <DependentUpon>CodeBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CodeBoxRenderInfo.cs" />
+    <Compile Include="CodeBoxSettings.cs" />
+    <Compile Include="Decorations\Decoration.cs" />
+    <Compile Include="Decorations\DecorationScheme.cs" />
+    <Compile Include="Decorations\DecorationSchemes.cs" />
+    <Compile Include="Decorations\DecorationSchemeTypeConverter.cs" />
+    <Compile Include="Decorations\DoubleQuotedDecoration.cs" />
+    <Compile Include="Decorations\DoubleRegexDecoration.cs" />
+    <Compile Include="Decorations\EDecorationType.cs" />
+    <Compile Include="Decorations\ExplicitDecoration.cs" />
+    <Compile Include="Decorations\MultiExplicitDecoration.cs" />
+    <Compile Include="Decorations\MultiRegexDecoration.cs" />
+    <Compile Include="Decorations\MultiRegexWordDecoration.cs" />
+    <Compile Include="Decorations\MultiStringDecoration.cs" />
+    <Compile Include="Decorations\RegexDecoration.cs" />
+    <Compile Include="Decorations\RegexMatchDecoration.cs" />
+    <Compile Include="Decorations\RegexWordDecoration.cs" />
+    <Compile Include="Decorations\StringDecoration.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="App.xaml.cs">
-      <DependentUpon>App.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MainWindowImpl.cs" />
+    <Compile Include="Pair.cs" />
+    <Compile Include="PointCollectionHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -86,38 +107,11 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="App.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="icon\CommentCode_16x.png" />
-    <Resource Include="icon\Copy_16x.png" />
-    <Resource Include="icon\Cut_16x.png" />
-    <Resource Include="icon\NewFile_16x.png" />
-    <Resource Include="icon\OpenFolder_16x.png" />
-    <Resource Include="icon\Paste_16x.png" />
-    <Resource Include="icon\Redo_16x.png" />
-    <Resource Include="icon\Redo_grey_16x.png" />
-    <Resource Include="icon\SaveAs_16x.png" />
-    <Resource Include="icon\Save_16x.png" />
-    <Resource Include="icon\UncommentCode_16x.png" />
-    <Resource Include="icon\Undo_16x.png" />
-    <Resource Include="icon\Undo_grey_16x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\CodeBoxControl\CodeBoxControl.csproj">
-      <Project>{9964a0bc-180b-4703-bb03-04dbe045534e}</Project>
-      <Name>CodeBoxControl</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Compiler\Compiler.csproj">
-      <Project>{c903712f-7528-4158-97ec-f33a62afced7}</Project>
-      <Name>Compiler</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

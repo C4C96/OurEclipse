@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OurEclipse", "OurEclipse\Ou
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Compiler", "Compiler\Compiler.csproj", "{C903712F-7528-4158-97EC-F33A62AFCED7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeBoxControl", "CodeBoxControl\CodeBoxControl.csproj", "{9964A0BC-180B-4703-BB03-04DBE045534E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{C903712F-7528-4158-97EC-F33A62AFCED7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C903712F-7528-4158-97EC-F33A62AFCED7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C903712F-7528-4158-97EC-F33A62AFCED7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9964A0BC-180B-4703-BB03-04DBE045534E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9964A0BC-180B-4703-BB03-04DBE045534E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9964A0BC-180B-4703-BB03-04DBE045534E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9964A0BC-180B-4703-BB03-04DBE045534E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
