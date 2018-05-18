@@ -11,6 +11,7 @@ namespace OurEclipse
 		public MainWindow()
 		{
 			InitializeComponent();
+			CodeBox.DecorationScheme = CodeBoxControl.Decorations.DecorationSchemes.Java;
 		}
 
 		private void CommandCanExecute(object sender, CanExecuteRoutedEventArgs e)
