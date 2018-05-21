@@ -50,25 +50,17 @@
     <Compile Include="CodeBox.xaml.cs">
       <DependentUpon>CodeBox.xaml</DependentUpon>
     </Compile>
-    <Compile Include="CodeBoxApplicationSettings.cs" />
     <Compile Include="CodeBoxRenderInfo.cs" />
     <Compile Include="CodeBoxSettings.cs" />
     <Compile Include="Decorations\Decoration.cs" />
     <Compile Include="Decorations\DecorationScheme.cs" />
     <Compile Include="Decorations\DecorationSchemes.cs" />
     <Compile Include="Decorations\DecorationSchemeTypeConverter.cs" />
-    <Compile Include="Decorations\DoubleQuotedDecoration.cs" />
-    <Compile Include="Decorations\DoubleRegexDecoration.cs" />
     <Compile Include="Decorations\EDecorationType.cs" />
-    <Compile Include="Decorations\ExplicitDecoration.cs" />
-    <Compile Include="Decorations\MultiExplicitDecoration.cs" />
     <Compile Include="Decorations\MultiRegexDecoration.cs" />
     <Compile Include="Decorations\MultiRegexWordDecoration.cs" />
     <Compile Include="Decorations\MultiStringDecoration.cs" />
     <Compile Include="Decorations\RegexDecoration.cs" />
-    <Compile Include="Decorations\RegexMatchDecoration.cs" />
-    <Compile Include="Decorations\RegexWordDecoration.cs" />
-    <Compile Include="Decorations\StringDecoration.cs" />
     <Compile Include="Pair.cs" />
     <Compile Include="PointCollectionHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">

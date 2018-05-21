@@ -6,61 +6,58 @@ using System.Text.RegularExpressions;
 using System.Windows;
 namespace CodeBoxControl.Decorations
 {
-    /// <summary>
-    /// Decoration based on a single regular expression string
-    /// </summary>
- public   class RegexDecoration:Decoration 
-    {
-        #region RegexString
+	/// <summary>
+	/// 基于正则表达式的文字装饰
+	/// </summary>
+	public class RegexDecoration : Decoration
+	{
+		#region RegexString
 
-     /// <summary>
-     /// The Regular expression used to evaluate the regex expressed as a string
-     /// </summary>
-        public static DependencyProperty RegexStringProperty = DependencyProperty.Register("RegexString", typeof(String), typeof(RegexDecoration),
-        new PropertyMetadata(  "", new PropertyChangedCallback(RegexDecoration.OnRegexStringChanged)));
+		/// <summary>
+		/// 用于匹配字符串的正则表达式
+		/// </summary>
+		public static DependencyProperty RegexStringProperty = DependencyProperty.Register("RegexString", typeof(String), typeof(RegexDecoration),
+		new PropertyMetadata("", new PropertyChangedCallback(RegexDecoration.OnRegexStringChanged)));
 
-        public String RegexString
-        {
-            get { return (String)GetValue(RegexStringProperty); }
-            set { SetValue(RegexStringProperty, value); }
-        }
+		public String RegexString
+		{
+			get { return (String)GetValue(RegexStringProperty); }
+			set { SetValue(RegexStringProperty, value); }
+		}
 
-        private static void OnRegexStringChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            if (e.NewValue != e.OldValue)
-            {
-                RegexDecoration dObj = (RegexDecoration)d;
-               dObj.IsDirty = true;
-            }
-        }
-       
-        #endregion
+		private static void OnRegexStringChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+		{
+			if (e.NewValue != e.OldValue)
+			{
+				RegexDecoration dObj = (RegexDecoration)d;
+				dObj.IsDirty = true;
+			}
+		}
 
-        public override List<Pair> Ranges(string Text)
-        {
-            List<Pair> pairs = new List<Pair>();
-            if (RegexString != "")
-            {
-            try
-            {
-                Regex rx = new Regex(RegexString);
-                MatchCollection mc = rx.Matches(Text);
-                foreach (Match m in mc)
-                {
-                    if (m.Length > 0)
-                    {
-                        pairs.Add(new Pair(m.Index, m.Length));
-                    }
-                } 
-            }catch {}
-        }
-            IsDirty = false;
-            return pairs;
-        }
+		#endregion
 
-        public override bool AreRangesSorted
-        {
-            get { return true; }
-        }
-    }
+		public override List<Pair> Ranges(string text)
+		{
+			List<Pair> pairs = new List<Pair>();
+			if (RegexString != "")
+			{
+				try
+				{
+					Regex rx = new Regex(RegexString);
+					MatchCollection mc = rx.Matches(text);
+					foreach (Match m in mc)
+						if (m.Length > 0)
+							pairs.Add(new Pair(m.Index, m.Length));
+				}
+				catch { }
+			}
+			IsDirty = false;
+			return pairs;
+		}
+
+		public override bool AreRangesSorted
+		{
+			get { return true; }
+		}
+	}
 }

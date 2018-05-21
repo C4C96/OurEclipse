@@ -1,52 +1,47 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows.Media;
+﻿using System.Collections.Generic;
 using System.Windows;
+using System.Windows.Media;
+
 namespace CodeBoxControl.Decorations
 {
-    /// <summary>
-    /// Abstract base class for decorations
-    /// </summary>
-  public abstract  class Decoration:DependencyObject 
-    {
-      /// <summary>
-      /// EDecoration Type of the decoration , Default is TextColor
-      /// </summary>
-      public static DependencyProperty DecorationTypeProperty = DependencyProperty.Register("DecorationType", typeof(EDecorationType), typeof(Decoration),
-    new PropertyMetadata(EDecorationType.TextColor));
+	/// <summary>
+	/// 对于文字装饰的抽象类
+	/// </summary>
+	public abstract class Decoration : DependencyObject
+	{
+		/// <summary>
+		/// 装饰的类型，默认是TextColor
+		/// </summary>
+		public static DependencyProperty DecorationTypeProperty = DependencyProperty.Register("DecorationType", typeof(EDecorationType), typeof(Decoration),
+	  new PropertyMetadata(EDecorationType.TextColor));
 
-        public EDecorationType DecorationType
-        {
-            get { return (EDecorationType)GetValue(DecorationTypeProperty); }
-            set { SetValue(DecorationTypeProperty, value); }
-        }
+		public EDecorationType DecorationType
+		{
+			get { return (EDecorationType)GetValue(DecorationTypeProperty); }
+			set { SetValue(DecorationTypeProperty, value); }
+		}
 
-      /// <summary>
-      /// Brushed used for the decoration
-      /// </summary>
-        public static DependencyProperty BrushProperty = DependencyProperty.Register("Brush", typeof(Brush), typeof(Decoration),
-        new PropertyMetadata(null));
+		/// <summary>
+		/// 使用的Brush
+		/// </summary>
+		public static DependencyProperty BrushProperty = DependencyProperty.Register("Brush", typeof(Brush), typeof(Decoration),
+		new PropertyMetadata(null));
 
-        public Brush Brush
-        {
-            get { return (Brush)GetValue(BrushProperty); }
-            set { SetValue(BrushProperty, value); }
-        }
+		public Brush Brush
+		{
+			get { return (Brush)GetValue(BrushProperty); }
+			set { SetValue(BrushProperty, value); }
+		}
 
-        public abstract List<Pair> Ranges(string Text);
+		public abstract List<Pair> Ranges(string text);
 
-        public abstract bool AreRangesSorted{get;}
+		public abstract bool AreRangesSorted { get; }
+		
+		public bool IsDirty { get; protected set; }
 
-      
-
-        public bool IsDirty { get; protected set; }
-
-        public Decoration()
-        {
-            IsDirty = true;
-        }
-
-    }
+		public Decoration()
+		{
+			IsDirty = true;
+		}
+	}
 }

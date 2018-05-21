@@ -5,14 +5,14 @@ using System.Text;
 
 namespace CodeBoxControl.Decorations
 {
-    /// <summary>
-    /// Enumeration of the available styles of text decoration
-    /// </summary>
-  public  enum EDecorationType
-    {
-      TextColor,
-      Hilight,
-      Underline,
-      Strikethrough
-    }
+	/// <summary>
+	/// 文字装饰类型的枚举
+	/// </summary>
+	public enum EDecorationType
+	{
+		TextColor,
+		Hilight,
+		Underline,
+		Strikethrough
+	}
 }

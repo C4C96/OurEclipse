@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Windows.Media;
-using System.Windows.Markup;
-using System.ComponentModel;
+
 namespace CodeBoxControl.Decorations
 {
 	public static class DecorationSchemes
@@ -226,182 +222,7 @@ namespace CodeBoxControl.Decorations
 		}
 
 		#endregion
-
-		#region DBML
-
-		public static DecorationScheme Dbml
-		{
-			get
-			{
-				DecorationScheme ds = new DecorationScheme();
-
-				ds.Name = "Dbml#";
-
-				MultiRegexWordDecoration BrownWords = new MultiRegexWordDecoration();
-				BrownWords.Brush = new SolidColorBrush(Colors.Brown);
-				BrownWords.Words = new List<string>() { "xml", "Database", "Table", "Type", "Column", "Association" };
-				ds.BaseDecorations.Add(BrownWords);
-
-
-				MultiRegexWordDecoration RedWords = new MultiRegexWordDecoration();
-				RedWords.Brush = new SolidColorBrush(Colors.Red);
-				RedWords.Words = new List<string>() { "version", "encoding", "Name", "Class", "xmlns", "Member", "Type", "DbType", "CanBeNull" , "DeleteRule", "IsPrimaryKey"
-			  ,"IsForeignKey", "ThisKey", "OtherKey", "IsDbGenerated" ,"UpdateCheck" };
-				ds.BaseDecorations.Add(RedWords);
-
-				DoubleQuotedDecoration quoted = new DoubleQuotedDecoration();
-				quoted.Brush = new SolidColorBrush(Colors.Blue);
-				ds.BaseDecorations.Add(quoted);
-
-
-				MultiStringDecoration blueStrings = new MultiStringDecoration();
-				blueStrings.Brush = new SolidColorBrush(Colors.Blue);
-				blueStrings.Strings = new List<string>() { "<", "?", "=", "/", ">" };
-				ds.BaseDecorations.Add(blueStrings);
-
-
-				StringDecoration quotationMarks = new StringDecoration();
-				quotationMarks.String = "\"";
-				quotationMarks.Brush = new SolidColorBrush(Colors.Black);
-				ds.BaseDecorations.Add(quotationMarks);
-
-
-
-				//RegexDecoration quotedText = new RegexDecoration();
-				//quotedText.Brush = new SolidColorBrush(Colors.Brown);
-				//quotedText.RegexString = "(?s:\".*?\")";
-				//ds.BaseDecorations.Add(quotedText);
-
-
-				////Color single line comments green
-				//RegexDecoration singleLineComment = new RegexDecoration();
-				//singleLineComment.DecorationType = EDecorationType.TextColor;
-				//singleLineComment.Brush = new SolidColorBrush(Colors.Green);
-				//singleLineComment.RegexString = "//.*";
-				//ds.BaseDecorations.Add(singleLineComment);
-
-				////Color multiline comments green
-				//RegexDecoration multiLineComment = new RegexDecoration();
-				//multiLineComment.DecorationType = EDecorationType.TextColor;
-				//multiLineComment.Brush = new SolidColorBrush(Colors.Green);
-				//multiLineComment.RegexString = @"(?s:/\*.*?\*/)";
-				//ds.BaseDecorations.Add(multiLineComment);
-
-				return ds;
-
-			}
-		}
-
-		#endregion
-
-		#region XML
-		public static DecorationScheme Xml
-		{
-			get
-			{
-				DecorationScheme ds = new DecorationScheme();
-				ds.Name = "XML";
-
-				MultiStringDecoration specialCharacters = new MultiStringDecoration();
-				specialCharacters.Brush = new SolidColorBrush(Colors.Blue);
-				specialCharacters.Strings = new List<string>() { "<", "/", ">", "<?", "?>", "=" };
-				ds.BaseDecorations.Add(specialCharacters);
-
-				RegexMatchDecoration xmlTagName = new RegexMatchDecoration();
-				xmlTagName.Brush = new SolidColorBrush(Colors.Brown);
-				xmlTagName.RegexString = @"</?(?<selected>\w.*?)(\s|>|/)";
-				ds.BaseDecorations.Add(xmlTagName);
-
-				RegexMatchDecoration xmlAttributeName = new RegexMatchDecoration();
-				xmlAttributeName.Brush = new SolidColorBrush(Colors.Red);
-				xmlAttributeName.RegexString = @"\s(?<selected>\w+|\w+:\w+|(\w|\.)+)="".*?""";
-				ds.BaseDecorations.Add(xmlAttributeName);
-
-				RegexMatchDecoration xmlAttributeValue = new RegexMatchDecoration();
-				xmlAttributeValue.Brush = new SolidColorBrush(Colors.Blue);
-				xmlAttributeValue.RegexString = @"\s(\w+|\w+:\w+|(\w|\.)+)\s*=\s*""(?<selected>.*?)""";
-				ds.BaseDecorations.Add(xmlAttributeValue);
-
-				RegexMatchDecoration xml = new RegexMatchDecoration();
-				xml.Brush = new SolidColorBrush(Colors.Brown);
-				xml.RegexString = @"<\?(?<selected>xml)";
-				ds.BaseDecorations.Add(xml);
-
-
-				return ds;
-			}
-
-		}
-
-		#endregion
-
-		#region XAML
-
-		public static DecorationScheme Xaml
-		{
-			get
-			{
-				DecorationScheme ds = new DecorationScheme();
-				ds.Name = "XAML";
-				MultiStringDecoration specialCharacters = new MultiStringDecoration();
-				specialCharacters.Brush = new SolidColorBrush(Colors.Blue);
-				specialCharacters.Strings = new List<string>() { "<", "/", ">", "<?", "?>" };
-				ds.BaseDecorations.Add(specialCharacters);
-
-				RegexMatchDecoration xmlTagName = new RegexMatchDecoration();
-				xmlTagName.Brush = new SolidColorBrush(Colors.Brown);
-				xmlTagName.RegexString = @"</?(?<selected>\w.*?)(\s|>|/)";
-				ds.BaseDecorations.Add(xmlTagName);
-
-
-
-				RegexMatchDecoration xmlAttributeName = new RegexMatchDecoration();
-				xmlAttributeName.Brush = new SolidColorBrush(Colors.Red);
-				xmlAttributeName.RegexString = @"\s(?<selected>\w+|\w+:\w+|(\w|\.)+)="".*?""";
-				ds.BaseDecorations.Add(xmlAttributeName);
-
-				RegexMatchDecoration xmlAttributeValue = new RegexMatchDecoration();
-				xmlAttributeValue.Brush = new SolidColorBrush(Colors.Blue);
-				xmlAttributeValue.RegexString = @"\s(\w+|\w+:\w+|(\w|\.)+)\s*(?<selected>=\s*"".*?"")";
-				ds.BaseDecorations.Add(xmlAttributeValue);
-
-				RegexMatchDecoration xamlMarkupExtension = new RegexMatchDecoration();
-				xamlMarkupExtension.RegexString = @"\s(\w+|\w+:\w+|(\w|\.)+)\s*=\s*""{(?<selected>.*?)\s+.*?}""";
-				xamlMarkupExtension.Brush = new SolidColorBrush(Colors.Brown);
-				ds.BaseDecorations.Add(xamlMarkupExtension);
-
-				RegexMatchDecoration xamlMarkupExtensionValue = new RegexMatchDecoration();
-				xamlMarkupExtensionValue.RegexString = @"\s(\w+|\w+:\w+|(\w|\.)+)\s*=\s*""{.*?\s+(?<selected>.*?)}""";
-				xamlMarkupExtensionValue.Brush = new SolidColorBrush(Colors.Red);
-				ds.BaseDecorations.Add(xamlMarkupExtensionValue);
-
-				DoubleRegexDecoration MarkupPeriods = new DoubleRegexDecoration();
-				MarkupPeriods.Brush = new SolidColorBrush(Colors.Blue);
-				MarkupPeriods.OuterRegexString = @"\s(\w+|\w+:\w+|(\w|\.)+)\s*=\s*""{.*?\s+.*?}""";
-				MarkupPeriods.InnerRegexString = @"\.";
-				ds.BaseDecorations.Add(MarkupPeriods);
-
-				RegexMatchDecoration xml = new RegexMatchDecoration();
-				xml.Brush = new SolidColorBrush(Colors.Brown);
-				xml.RegexString = @"<\?(?<selected>xml)";
-				ds.BaseDecorations.Add(xml);
-
-				RegexMatchDecoration elementValues = new RegexMatchDecoration();
-				elementValues.Brush = new SolidColorBrush(Colors.Brown);
-				elementValues.RegexString = @">(?<selected>.*?)</";
-				ds.BaseDecorations.Add(elementValues);
-
-				RegexDecoration comment = new RegexDecoration();
-				comment.Brush = new SolidColorBrush(Colors.Green);
-				comment.RegexString = @"<!--.*?-->";
-				ds.BaseDecorations.Add(comment);
-
-				return ds;
-			}
-		}
-
-		#endregion
-
+	
 		#region Java
 
 		public static DecorationScheme Java
@@ -414,14 +235,15 @@ namespace CodeBoxControl.Decorations
 				MultiRegexWordDecoration BlueWords = new MultiRegexWordDecoration
 				{
 					Brush = new SolidColorBrush(Colors.Blue),
-					Words = JavaReservedWords()
+					Words = JavaReservedWords(),
+					IsCaseSensitive = true,
 				};
 				ds.BaseDecorations.Add(BlueWords);
 
 				RegexDecoration quotedText = new RegexDecoration
 				{
 					Brush = new SolidColorBrush(Colors.Brown),
-					RegexString = "(?s:\".*?\")"
+					RegexString = "\"(.*?)(?<![^\\\\]\\\\)\""
 				};
 				ds.BaseDecorations.Add(quotedText);
 				

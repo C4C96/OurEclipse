@@ -4,33 +4,33 @@ using System.Linq;
 using System.Text;
 
 namespace CodeBoxControl
-{   
-    /// <summary>
-    /// Represents a character range with starting value and length
-    /// </summary>
-    public class Pair
-    {
-        /// <summary>
-        /// First character in range, zero based
-        /// </summary>
-        public int Start { get; set; }
-        /// <summary>
-        /// Number of characters in range
-        /// </summary>
-        public int Length { get; set; }
+{
+	/// <summary>
+	/// 表示一片字符的范围，包含开始位置与长度
+	/// </summary>
+	public class Pair
+	{
+		/// <summary>
+		/// 字符的开始位置，从0开始计数
+		/// </summary>
+		public int Start { get; set; }
 
-        public Pair(){}
-        
-        public Pair(int start, int length)
-        {
-            Start = start;
-            Length = length;
-        }
+		/// <summary>
+		/// 字符的长度
+		/// </summary>
+		public int Length { get; set; }
 
-        public int End
-        {
-            get{return Start + Length;}
-        }
-    }
+		public Pair() { }
+
+		public Pair(int start, int length)
+		{
+			Start = start;
+			Length = length;
+		}
+
+		public int End
+		{
+			get { return Start + Length; }
+		}
+	}
 }
- 

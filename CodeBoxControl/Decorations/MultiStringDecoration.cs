@@ -5,42 +5,33 @@ using System.Text;
 
 namespace CodeBoxControl.Decorations
 {
-    /// <summary>
-    /// Decoration based on index positions of a list of strings
-    /// </summary>
-  public   class MultiStringDecoration:Decoration 
-    {
-        private List<string> mStrings = new List<string>();
-        /// <summary>
-        /// The list of strings to be searched for 
-        /// </summary>
-        public List<string> Strings
-        {
-            get { return mStrings; }
-            set { mStrings = value; }
-        }
-        /// <summary>
-        /// The System.StringComparison value to be used in searching 
-        /// </summary>
-        public StringComparison StringComparison { get; set; }
-        public override List<Pair> Ranges(string Text)
-        {
-            List<Pair> pairs = new List<Pair>();
-            foreach (string word in mStrings)
-            {
-                int index = Text.IndexOf(word, 0, StringComparison);
-                while (index != -1)
-                {
-                    pairs.Add(new Pair(index, word.Length));
-                    index = Text.IndexOf(word, index + word.Length, StringComparison);
-                }
-            }
-            return pairs;
-        }
+	/// <summary>
+	/// 基于多个字符串的文字装饰
+	/// </summary>
+	public class MultiStringDecoration : Decoration
+	{
+		public List<string> Strings { get; set; }
+	
+		public StringComparison StringComparison { get; set; }
 
-        public override bool AreRangesSorted
-        {
-            get {return false; }
-        }
-    }
+		public override List<Pair> Ranges(string text)
+		{
+			List<Pair> pairs = new List<Pair>();
+			foreach (string word in Strings)
+			{
+				int index = text.IndexOf(word, 0, StringComparison);
+				while (index != -1)
+				{
+					pairs.Add(new Pair(index, word.Length));
+					index = text.IndexOf(word, index + word.Length, StringComparison);
+				}
+			}
+			return pairs;
+		}
+
+		public override bool AreRangesSorted
+		{
+			get { return false; }
+		}
+	}
 }
