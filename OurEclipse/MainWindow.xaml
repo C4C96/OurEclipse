@@ -128,7 +128,7 @@
             </Grid.RowDefinitions>
             <c:CodeBox Name="CodeBox" Grid.Row="0" TextWrapping="Wrap" LineNumberMarginWidth="27"/>
             <GridSplitter Grid.Row="1" Height="5" HorizontalAlignment="Stretch"/>
-            <TextBox Grid.Row="2" IsReadOnly="True" VerticalScrollBarVisibility="Auto" Text="Output infomation" />            
+            <TextBox Grid.Row="2" IsReadOnly="True" VerticalScrollBarVisibility="Auto" Text="Output infomation" />
         </Grid>
     </DockPanel>
 </Window>

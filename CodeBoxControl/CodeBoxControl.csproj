@@ -50,6 +50,7 @@
     <Compile Include="CodeBox.xaml.cs">
       <DependentUpon>CodeBox.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CodeBoxPopup.cs" />
     <Compile Include="CodeBoxRenderInfo.cs" />
     <Compile Include="CodeBoxSettings.cs" />
     <Compile Include="Decorations\Decoration.cs" />

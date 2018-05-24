@@ -22,7 +22,7 @@ namespace CodeBoxControl
 			IsEnabled = false,
 			Interval = TimeSpan.FromMilliseconds(50)
 		};
-
+		
 		/// <summary>
 		/// 用于缓存渲染信息
 		/// </summary>
@@ -32,11 +32,20 @@ namespace CodeBoxControl
 		{
 			this.TextChanged += (s, e) => InvalidateVisual();
 			this.SelectionChanged += (s, e) => InvalidateVisual();			
+			this.Loaded += (s, e) =>
+			{ 
+				// 使ScrollView能监听
+				DependencyObject dp = VisualTreeHelper.GetChild(this, 0);
+				dp = VisualTreeHelper.GetChild(dp, 0);
+				ScrollViewer sv = VisualTreeHelper.GetChild(dp, 0) as ScrollViewer;
+				sv.ScrollChanged += (s2, e2) => this.InvalidateVisual();
+			};
 			renderTimer.Tick += (s, e) =>
 			{
 				renderTimer.IsEnabled = false;
 				this.InvalidateVisual();
 			};
+			InitPopup();
 			InitializeComponent();
 		}
 
@@ -148,7 +157,6 @@ namespace CodeBoxControl
 		/// <param name="drawingContext"></param>
 		protected override void OnRender(DrawingContext drawingContext)
 		{
-			EnsureScrolling();
 			base.OnRender(drawingContext);
 
 			if (System.ComponentModel.DesignerProperties.GetIsInDesignMode(this))
@@ -398,8 +406,6 @@ namespace CodeBoxControl
 			DisplayGeometry(drawingContext, preparedDecorations[EDecorationType.Underline], renderPoint);
 		}
 
-		#endregion
-
 		/// <summary>
 		/// 获取RenderPoint，即第一个字符的左上角的点
 		/// 可能因textbox的滚动而产生负值
@@ -423,7 +429,7 @@ namespace CodeBoxControl
 				this.renderTimer.IsEnabled = true;
 				return renderinfo.RenderPoint;
 			}
-		}
+		}		
 
 		private void DisplayGeometry(DrawingContext drawingContext, Dictionary<Decoration, List<Geometry>> geometryDictionary, Point renderPoint)
 		{
@@ -437,7 +443,7 @@ namespace CodeBoxControl
 				}
 			}
 		}
-
+		
 		private Dictionary<Decoration, List<Geometry>> PrepareGeometries(Pair pair, FormattedText visibleFormattedText, List<Decoration> decorations, EDecorationType decorationType, GeometryMaker gMaker)
 		{
 			Dictionary<Decoration, List<Geometry>> geometryDictionary = new Dictionary<Decoration, List<Geometry>>();
@@ -457,7 +463,7 @@ namespace CodeBoxControl
 			}
 			return geometryDictionary;
 		}
-
+		
 		/// <summary>
 		/// Delegate used with the PrepareGeomeries method.
 		/// </summary>
@@ -514,31 +520,6 @@ namespace CodeBoxControl
 			else
 				return null;
 		}
-
-		#region Ensure Scrolling
-
-		private bool mScrollingEventEnabled;
-
-		/// <summary>
-		/// 使得ScrollViewr能监听到
-		/// </summary>
-		private void EnsureScrolling()
-		{
-			if (!mScrollingEventEnabled)
-			{
-				try
-				{
-					DependencyObject dp = VisualTreeHelper.GetChild(this, 0);
-					dp = VisualTreeHelper.GetChild(dp, 0);
-					ScrollViewer sv = VisualTreeHelper.GetChild(dp, 0) as ScrollViewer;
-					sv.ScrollChanged += (s, e) => this.InvalidateVisual();
-					mScrollingEventEnabled = true;
-				}
-				catch { }
-			}
-		}
-
-		#endregion
 
 		/// <summary>
 		/// 获取Textbox中可见的文本
@@ -616,6 +597,8 @@ namespace CodeBoxControl
 			return formattedText.WidthIncludingTrailingWhitespace;
 		}
 
+		#endregion
+
 		#region line number calculations
 
 		/// <summary>
@@ -657,6 +640,8 @@ namespace CodeBoxControl
 					LineNumberForeground);
 			return lineNumbers;
 		}
+
+		#region LineNumberWithWrap
 
 		/// <summary>
 		/// TextWrapping = Wrap or WrapWithOverflow时显示行号
@@ -822,6 +807,6 @@ namespace CodeBoxControl
 
 		#endregion
 
+		#endregion
 	}
 }
-

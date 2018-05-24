@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Input;
+using System.Windows.Media;
 
 namespace OurEclipse
 {
@@ -12,15 +13,27 @@ namespace OurEclipse
 		{
 			InitializeComponent();
 			CodeBox.DecorationScheme = CodeBoxControl.Decorations.DecorationSchemes.Java;
+			CodeBox.Decorations.Add(new CodeBoxControl.Decorations.MultiRegexWordDecoration
+			{
+				Brush = new SolidColorBrush(Color.FromArgb(30, 0, 0, 255)),
+				DecorationType = CodeBoxControl.Decorations.EDecorationType.Hilight,
+				Words = new System.Collections.Generic.List<string>() { "abc" }
+			});
+			CodeBox.Decorations.Add(new CodeBoxControl.Decorations.MultiRegexWordDecoration
+			{
+				Brush = new SolidColorBrush(Color.FromArgb(255, 255, 0, 0)),
+				DecorationType = CodeBoxControl.Decorations.EDecorationType.Underline,
+				Words = new System.Collections.Generic.List<string>() { "def" }
+			});
 		}
-
+		
 		private void CommandCanExecute(object sender, CanExecuteRoutedEventArgs e)
 		{
 			//if (e.Command == ApplicationCommands.New
 			//	|| e.Command == ApplicationCommands.Open
 			//	|| e.Command == ApplicationCommands.Save
 			//	|| e.Command == ApplicationCommands.SaveAs)
-				e.CanExecute = true;
+			e.CanExecute = true;
 			e.Handled = true;
 		}
 
