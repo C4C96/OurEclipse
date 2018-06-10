@@ -1,6 +1,9 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace OurEclipse
 {
@@ -12,6 +15,14 @@ namespace OurEclipse
 		public MainWindow()
 		{
 			InitializeComponent();
+			// 更新状态栏
+			CodeBox.SelectionChanged += (s, e) =>
+			{
+				int lineIndex = CodeBox.GetLineIndexFromCharacterIndex(CodeBox.CaretIndex);
+				LineIndexSBI.Content = lineIndex + 1;
+				ColIndexSBI.Content = CodeBox.CaretIndex - CodeBox.GetCharacterIndexFromLineIndex(lineIndex) + 1;
+				SelectionLengthSBI.Content = CodeBox.SelectionLength;
+			};
 			CodeBox.DecorationScheme = CodeBoxControl.Decorations.DecorationSchemes.Java;
 			CodeBox.Decorations.Add(new CodeBoxControl.Decorations.MultiRegexWordDecoration
 			{
@@ -29,12 +40,25 @@ namespace OurEclipse
 		
 		private void CommandCanExecute(object sender, CanExecuteRoutedEventArgs e)
 		{
-			//if (e.Command == ApplicationCommands.New
-			//	|| e.Command == ApplicationCommands.Open
-			//	|| e.Command == ApplicationCommands.Save
-			//	|| e.Command == ApplicationCommands.SaveAs)
-			e.CanExecute = true;
-			e.Handled = true;
+			if (e.Command == ApplicationCommands.Undo && CodeBox != null)
+			{
+				e.CanExecute = CodeBox.CanUndo;
+				e.Handled = true;
+			}
+			else if (e.Command == ApplicationCommands.Redo && CodeBox != null)
+			{
+				e.CanExecute = CodeBox.CanRedo;
+				e.Handled = true;
+			}
+			else
+			{
+				if (e.Command == ApplicationCommands.New
+					|| e.Command == ApplicationCommands.Open
+					|| e.Command == ApplicationCommands.Save
+					|| e.Command == ApplicationCommands.SaveAs)
+					e.CanExecute = true;
+				e.Handled = true;
+			}
 		}
 
 		private void CommandExecute(object sender, ExecutedRoutedEventArgs e)
@@ -50,22 +74,20 @@ namespace OurEclipse
 				SaveAs();
 			else if (e.Command == ApplicationCommands.Close)
 				Close();
-			else if (e.Command == ApplicationCommands.Undo)
-				Undo();
-			else if (e.Command == ApplicationCommands.Redo)
-				Redo();
-			else if (e.Command == ApplicationCommands.Cut)
-				Cut();
-			else if (e.Command == ApplicationCommands.Copy)
-				Copy();
-			else if (e.Command == ApplicationCommands.Paste)
-				Paste();
 			else if (e.Command == TryFindResource("Comment"))
 				Comment();
 			else if (e.Command == TryFindResource("Uncomment"))
 				Uncomment();
 			else
 				e.Handled = false;
+		}
+
+		private void Button_IsEnabledChanged(object sender, DependencyPropertyChangedEventArgs e)
+		{
+			if (sender == UndoButton)
+				(UndoButton.Content as Image).Source = new BitmapImage(new Uri(UndoButton.IsEnabled ? @"icon/Undo_16x.png" : @"icon/Undo_grey_16x.png", UriKind.Relative));
+			else if (sender == RedoButton)
+				(RedoButton.Content as Image).Source = new BitmapImage(new Uri(RedoButton.IsEnabled ? @"icon/Redo_16x.png" : @"icon/Redo_grey_16x.png", UriKind.Relative));
 		}
 	}
 }

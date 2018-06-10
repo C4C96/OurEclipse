@@ -77,10 +77,10 @@
                     <Image Source="icon/SaveAs_16x.png"/>
                 </Button>
                 <Separator />
-                <Button ToolTip="撤销(Ctrl+Z)" Command="Undo">
+                <Button Name="UndoButton" ToolTip="撤销(Ctrl+Z)" Command="Undo" IsEnabledChanged="Button_IsEnabledChanged">
                     <Image Source="icon/Undo_16x.png"/>
                 </Button>
-                <Button ToolTip="重做(Ctrl+Y)" Command="Redo">
+                <Button Name="RedoButton" ToolTip="重做(Ctrl+Y)" Command="Redo" IsEnabledChanged="Button_IsEnabledChanged">
                     <Image Source="icon/Redo_16x.png"/>
                 </Button>
             </ToolBar>
@@ -104,31 +104,80 @@
             </ToolBar>
         </ToolBarTray>
         <StatusBar DockPanel.Dock="Bottom" VerticalAlignment="Bottom">
-            <StatusBarItem Content="StatusBar" Width="100"/>
+            <StatusBarItem Name="StateSBI" Content="就绪" Width="100"/>
             <Separator />
             <StatusBarItem HorizontalAlignment="Right">
                 <StackPanel Orientation="Horizontal">
                     <StatusBarItem Content="    行 "/>
-                    <StatusBarItem Content="1"/>
+                    <StatusBarItem Name="LineIndexSBI" Content="1"/>
                     <StatusBarItem Content="    列 "/>
-                    <StatusBarItem Content="1"/>
+                    <StatusBarItem Name="ColIndexSBI" Content="1"/>
                     <StatusBarItem Content="     字符 "/>
-                    <StatusBarItem Content="1"/>
+                    <StatusBarItem Name="SelectionLengthSBI" Content="1"/>
                     <StatusBarItem Content="          "/>
                     <StatusBarItem Content="Ins"/>
                     <StatusBarItem Content="       "/>
                 </StackPanel>
             </StatusBarItem>
         </StatusBar>
-        <Grid Name="MainGrid">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="3*" MinHeight="100"/>
-                <RowDefinition Height="5"/>
-                <RowDefinition Height="1*" MinHeight="100"/>
-            </Grid.RowDefinitions>
-            <c:CodeBox Name="CodeBox" Grid.Row="0" TextWrapping="Wrap" LineNumberMarginWidth="27"/>
-            <GridSplitter Grid.Row="1" Height="5" HorizontalAlignment="Stretch"/>
-            <TextBox Grid.Row="2" IsReadOnly="True" VerticalScrollBarVisibility="Auto" Text="Output infomation" />
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*" MinWidth="250"/>
+                <ColumnDefinition Width="5"/>
+                <ColumnDefinition Width="1*" MinWidth="150"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="3*" MinHeight="100"/>
+                    <RowDefinition Height="5"/>
+                    <RowDefinition Height="1*" MinHeight="100"/>
+                </Grid.RowDefinitions>
+                <c:CodeBox Name="CodeBox" Grid.Row="0" TextWrapping="Wrap" LineNumberMarginWidth="27"/>
+                <GridSplitter Grid.Row="1" Height="5" HorizontalAlignment="Stretch"/>
+                <TextBox Name="ErrorInfoTextBox" Grid.Row="2" IsReadOnly="True" VerticalScrollBarVisibility="Auto" Text="Output infomation" />
+            </Grid>
+            <GridSplitter Grid.Column="1" Width="5" VerticalAlignment="Stretch" HorizontalAlignment="Center"/>
+            <TabControl Grid.Column="2" TabStripPlacement="Right">
+                <TabControl.Resources>
+                    <!--tabitem的header旋转90°-->
+                    <Style TargetType="TabItem">
+                        <Setter Property="HeaderTemplate">
+                            <Setter.Value>
+                                <DataTemplate>
+                                    <ContentPresenter Content="{TemplateBinding Content}">
+                                        <ContentPresenter.LayoutTransform>
+                                            <RotateTransform Angle="90"/>
+                                        </ContentPresenter.LayoutTransform>
+                                    </ContentPresenter>
+                                </DataTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </TabControl.Resources>
+                <TabItem Header="First Table">
+                    <DataGrid CanUserAddRows="False" IsReadOnly="True">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="符号" Width="*"/>
+                            <DataGridTextColumn Header="First集" Width="*"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </TabItem>
+                <TabItem Header="Follow Table">
+                    <DataGrid>
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="符号" Width="*"/>
+                            <DataGridTextColumn Header="Follow集" Width="*"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </TabItem>
+                <TabItem Header="LL分析表">
+                    
+                </TabItem>
+                <TabItem Header="语法生成树">
+                    <TreeView Name="ASTView">
+                    </TreeView>
+                </TabItem>
+            </TabControl>
         </Grid>
     </DockPanel>
 </Window>

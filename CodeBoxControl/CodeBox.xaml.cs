@@ -191,7 +191,20 @@ namespace CodeBoxControl
 			
 
 			int firstLine = GetFirstVisibleLineIndex();
-			int firstChar = (firstLine == 0) ? 0 : GetCharacterIndexFromLineIndex(firstLine);
+			int firstChar;
+			if (firstLine == 0)
+				firstChar = 0;
+			else
+			{
+				try
+				{
+					firstChar = GetCharacterIndexFromLineIndex(firstLine);
+				}
+				catch
+				{
+					firstChar = 0;
+				}
+			}
 			Point renderPoint = GetRenderPoint(firstChar);
 
 			// 绘制行号

@@ -62,8 +62,12 @@
     <Compile Include="Decorations\MultiRegexWordDecoration.cs" />
     <Compile Include="Decorations\MultiStringDecoration.cs" />
     <Compile Include="Decorations\RegexDecoration.cs" />
+    <Compile Include="ImageSourceConventer.cs" />
     <Compile Include="Pair.cs" />
     <Compile Include="PointCollectionHelper.cs" />
+    <Compile Include="PopupControl.xaml.cs">
+      <DependentUpon>PopupControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -92,6 +96,22 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="PopupControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Snippet\Class_16x.png" />
+    <Resource Include="Snippet\Enumerator_16x.png" />
+    <Resource Include="Snippet\Field_16x.png" />
+    <Resource Include="Snippet\Interface_16x.png" />
+    <Resource Include="Snippet\KeywordSnippet_16x.png" />
+    <Resource Include="Snippet\LocalVariable_16x.png" />
+    <Resource Include="Snippet\MethodPrivate_16x.png" />
+    <Resource Include="Snippet\MethodProtect_16x.png" />
+    <Resource Include="Snippet\MethodSealed_16x.png" />
+    <Resource Include="Snippet\Method_16x.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
