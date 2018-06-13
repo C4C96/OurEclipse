@@ -5,7 +5,7 @@ using System.Windows.Media.Imaging;
 
 namespace CodeBoxControl
 {
-	class ImageSourceConventer : IValueConverter
+	public class ImageSourceConventer : IValueConverter
 	{
 		private static readonly BitmapImage CLASS_IMAGE = new BitmapImage(new Uri(@"Snippet\Class_16x.png", UriKind.Relative));
 		private static readonly BitmapImage INTERFACE_IMAGE = new BitmapImage(new Uri(@"Snippet\Interface_16x.png", UriKind.Relative));

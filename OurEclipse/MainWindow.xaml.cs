@@ -1,9 +1,12 @@
-﻿using System;
+﻿using Compiler;
+using System;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using static CodeBoxControl.PopupControl;
 
 namespace OurEclipse
 {
@@ -50,13 +53,12 @@ namespace OurEclipse
 				e.CanExecute = CodeBox.CanRedo;
 				e.Handled = true;
 			}
-			else
+			else //if (e.Command == ApplicationCommands.New
+			//		|| e.Command == ApplicationCommands.Open
+			//		|| e.Command == ApplicationCommands.Save
+			//		|| e.Command == ApplicationCommands.SaveAs)
 			{
-				if (e.Command == ApplicationCommands.New
-					|| e.Command == ApplicationCommands.Open
-					|| e.Command == ApplicationCommands.Save
-					|| e.Command == ApplicationCommands.SaveAs)
-					e.CanExecute = true;
+				e.CanExecute = true;
 				e.Handled = true;
 			}
 		}
@@ -85,9 +87,15 @@ namespace OurEclipse
 		private void Button_IsEnabledChanged(object sender, DependencyPropertyChangedEventArgs e)
 		{
 			if (sender == UndoButton)
-				(UndoButton.Content as Image).Source = new BitmapImage(new Uri(UndoButton.IsEnabled ? @"icon/Undo_16x.png" : @"icon/Undo_grey_16x.png", UriKind.Relative));
+			{
+				if (UndoButton.Content is Image image)
+					image.Source = new BitmapImage(new Uri(UndoButton.IsEnabled ? @"icon/Undo_16x.png" : @"icon/Undo_grey_16x.png", UriKind.Relative));
+			}
 			else if (sender == RedoButton)
-				(RedoButton.Content as Image).Source = new BitmapImage(new Uri(RedoButton.IsEnabled ? @"icon/Redo_16x.png" : @"icon/Redo_grey_16x.png", UriKind.Relative));
+			{
+				if (RedoButton.Content is Image _image)
+					_image.Source = new BitmapImage(new Uri(RedoButton.IsEnabled ? @"icon/Redo_16x.png" : @"icon/Redo_grey_16x.png", UriKind.Relative));
+			}
 		}
 	}
 }

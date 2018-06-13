@@ -1,51 +1,31 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Compiler
 {
-    class Node
+	public class Node
     {
-        public string symbol;
-        public Node parent;
-        public List<Node> children = new List<Node>();
-        public bool isChecked = false;
-        public Node(string s)
+        public string Symbol { get; set; }        
+        public bool IsChecked { get; set; } = false;
+
+		public Node Parent { get; set; }
+		public List<Node> Children { get; } = new List<Node>();
+
+		public Node(string s)
         {
-            symbol = s;
+            Symbol = s;
         }
 
         public void Add(Node n)
         {
-            children.Add(n);
-            n.parent = this;
+            Children.Add(n);
+            n.Parent = this;
         }
 
-        public bool hasChild()
+        public bool HasChild()
         {
-            return children.Count() != 0;
-        }
-
-        public void print(Node root)
-        {
-            Queue<Node> q = new Queue<Node>();
-            q.Enqueue(root);
-            while (q.Count != 0)
-            {
-                int count = q.Count;
-                for (int i = 0; i < count; i++)
-                {
-                    Node tmp = q.Dequeue();
-                    Console.Write(tmp.symbol + " ");
-                    for (int j = 0; j < tmp.children.Count; j++)
-                    {
-                        q.Enqueue(tmp.children[j]);
-                    }
-                }
-                Console.WriteLine();
-            }
+            return Children.Count() != 0;
         }
     }
 }

@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:OurEclipse"
+        xmlns:core="clr-namespace:Compiler;assembly=Compiler"
         xmlns:c="clr-namespace:CodeBoxControl;assembly=CodeBoxControl"
         mc:Ignorable="d"
         Title="Our Eclipse" Height="450" Width="800">
@@ -78,10 +79,10 @@
                 </Button>
                 <Separator />
                 <Button Name="UndoButton" ToolTip="撤销(Ctrl+Z)" Command="Undo" IsEnabledChanged="Button_IsEnabledChanged">
-                    <Image Source="icon/Undo_16x.png"/>
+                    <Image Source="icon/Undo_grey_16x.png"/>
                 </Button>
                 <Button Name="RedoButton" ToolTip="重做(Ctrl+Y)" Command="Redo" IsEnabledChanged="Button_IsEnabledChanged">
-                    <Image Source="icon/Redo_16x.png"/>
+                    <Image Source="icon/Redo_grey_16x.png"/>
                 </Button>
             </ToolBar>
             <ToolBar>
@@ -171,10 +172,15 @@
                     </DataGrid>
                 </TabItem>
                 <TabItem Header="LL分析表">
-                    
+
                 </TabItem>
                 <TabItem Header="语法生成树">
                     <TreeView Name="ASTView">
+                        <TreeView.ItemTemplate>
+                            <HierarchicalDataTemplate ItemsSource="{Binding Path=Children}">
+                                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Stretch" Text="{Binding Symbol}"/>
+                            </HierarchicalDataTemplate>
+                        </TreeView.ItemTemplate>
                     </TreeView>
                 </TabItem>
             </TabControl>

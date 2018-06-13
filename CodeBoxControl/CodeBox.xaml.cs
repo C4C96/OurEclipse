@@ -222,7 +222,7 @@ namespace CodeBoxControl
 					drawingContext.DrawText(renderinfo.LineNumbers, new Point(3, renderPoint.Y));
 			}
 
-			if (this.Text == "") return;
+			// if (this.Text == "") return;
 
 			string visibleText = VisibleText;
 			if (visibleText == null) return;

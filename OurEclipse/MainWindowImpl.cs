@@ -35,7 +35,7 @@ namespace OurEclipse
 			{
 				path = openFileDialog.FileName;
 				CodeBox.textChangedEnable = false;
-				CodeBox.Text = File.ReadAllText(path);
+				CodeBox.Text = File.ReadAllText(path, Encoding.Default);
 				CodeBox.textChangedEnable = true;
 				// 清空撤销栈
 				CodeBox.IsUndoEnabled = false;
@@ -115,7 +115,7 @@ namespace OurEclipse
 			StateSBI.Content = "保存中...";
 			try
 			{
-				File.WriteAllText(path, CodeBox.Text);
+				File.WriteAllText(path, CodeBox.Text, Encoding.Default);
 			}
 			catch(Exception e)
 			{
