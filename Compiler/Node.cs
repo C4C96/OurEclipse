@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Compiler
 {
@@ -12,6 +11,14 @@ namespace Compiler
 		public Node Parent { get; set; }
 		public List<Node> Children { get; } = new List<Node>();
 
+		public bool HasChild
+		{
+			get
+			{
+				return Children.Count != 0;
+			}
+		}
+
 		public Node(string s)
         {
             Symbol = s;
@@ -21,11 +28,6 @@ namespace Compiler
         {
             Children.Add(n);
             n.Parent = this;
-        }
-
-        public bool HasChild()
-        {
-            return Children.Count() != 0;
         }
     }
 }
