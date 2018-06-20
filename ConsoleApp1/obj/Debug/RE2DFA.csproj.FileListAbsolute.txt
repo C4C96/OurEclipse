@@ -1,0 +1,10 @@
+C:\Users\bao\Source\Repos\Lexical-analysis\trunk\ConsoleApp1\bin\Debug\RE2DFA.exe.config
+C:\Users\bao\Source\Repos\Lexical-analysis\trunk\ConsoleApp1\bin\Debug\RE2DFA.exe
+C:\Users\bao\Source\Repos\Lexical-analysis\trunk\ConsoleApp1\bin\Debug\RE2DFA.pdb
+C:\Users\bao\Source\Repos\Lexical-analysis\trunk\ConsoleApp1\obj\Debug\RE2DFA.exe
+C:\Users\bao\Source\Repos\Lexical-analysis\trunk\ConsoleApp1\obj\Debug\RE2DFA.pdb
+C:\Users\bao\Source\Repos\OurEclipse\trunk\ConsoleApp1\bin\Debug\RE2DFA.exe.config
+C:\Users\bao\Source\Repos\OurEclipse\trunk\ConsoleApp1\bin\Debug\RE2DFA.exe
+C:\Users\bao\Source\Repos\OurEclipse\trunk\ConsoleApp1\bin\Debug\RE2DFA.pdb
+C:\Users\bao\Source\Repos\OurEclipse\trunk\ConsoleApp1\obj\Debug\RE2DFA.exe
+C:\Users\bao\Source\Repos\OurEclipse\trunk\ConsoleApp1\obj\Debug\RE2DFA.pdb
