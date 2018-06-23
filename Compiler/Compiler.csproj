@@ -40,9 +40,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Env.cs" />
     <Compile Include="ErrorInfo.cs" />
+    <Compile Include="LL.cs" />
     <Compile Include="Node.cs" />
+    <Compile Include="Parser.cs" />
+    <Compile Include="ParserAdapter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ConsoleApp1Tests\RE2DFATests.csproj">
+      <Project>{9da313cc-f0a3-4aaf-92c3-22543b9ebbce}</Project>
+      <Name>RE2DFATests</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ConsoleApp1\RE2DFA.csproj">
+      <Project>{6dfbb21f-1099-4d57-9c5e-bcf0818633c7}</Project>
+      <Name>RE2DFA</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Lexical_Analyzer\Lexical_Analyzer.csproj">
+      <Project>{bea046eb-7f09-4df9-816d-65c2c05a9c3c}</Project>
+      <Name>Lexical_Analyzer</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
