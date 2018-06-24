@@ -47,16 +47,27 @@ namespace Lexical_Analyzer.Tests
             LexicalAnalyzer la = new LexicalAnalyzer();
             if (!la.LoadRules(path))
                 Assert.Fail();
+            la.Analyze("=2.5;\n" );
+            Assert.AreEqual(la.data[1].property, "Num");
+            Assert.AreEqual(la.data[1].value, "2.5");
+        }
+        [TestMethod()]
+        public void LoadRulesLA_test3()
+        {
+            LexicalAnalyzer la = new LexicalAnalyzer();
+            if (!la.LoadRules(path))
+                Assert.Fail();
             la.Analyze("import java;\n" +
                 "public class plus\n" +
                 "{\n" +
-                "double a=1;\n" +
-                "double b=2.5;\n" +
+                "double b=2;\n" +
                 "double c=(a+b);\n" +
                 "}");
             Assert.AreEqual(la.data[7].property, "Double");
             Assert.AreEqual(la.data[7].value, "double");
 
+            Assert.AreEqual(la.data[10].property, "Num");
+            Assert.AreEqual(la.data[10].value, "2");
         }
     }
 }
