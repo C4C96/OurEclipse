@@ -68,7 +68,7 @@ namespace Compiler
         }
 
         //得到需要输出的int或者double类型变量的值
-        private List<List<string>> ArithResult()
+        private List<Tuple<string,string>> ArithResult()
         {
             if (parser.arithResult != null)
                 return parser.arithResult;
@@ -83,7 +83,7 @@ namespace Compiler
             public Dictionary<string, List<string>> Follow { get; set; }
             public Dictionary<string, List<Dictionary<string, string>>> Table { get; set; }
             public Node Root { get; set; }
-            public List<List<string>> ArithResult { get; set; }
+            public List<Tuple<string,string>> ArithResult { get; set; }
         }
     }
 }
