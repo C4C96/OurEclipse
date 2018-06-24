@@ -4,3 +4,16 @@ C:\Users\huishi\Desktop\OurEclipse-master\OurEclipse-master\Compiler\obj\Debug\C
 C:\Users\huishi\Desktop\OurEclipse-master\OurEclipse-master\Compiler\obj\Debug\Compiler.csproj.CoreCompileInputs.cache
 C:\Users\huishi\Desktop\OurEclipse-master\OurEclipse-master\Compiler\obj\Debug\Compiler.dll
 C:\Users\huishi\Desktop\OurEclipse-master\OurEclipse-master\Compiler\obj\Debug\Compiler.pdb
+G:\CCProject\C#\OurEclipse\Compiler\bin\Debug\Compiler.dll
+G:\CCProject\C#\OurEclipse\Compiler\bin\Debug\Compiler.pdb
+G:\CCProject\C#\OurEclipse\Compiler\bin\Debug\Lexical_Analyzer.exe
+G:\CCProject\C#\OurEclipse\Compiler\bin\Debug\RE2DFA.exe
+G:\CCProject\C#\OurEclipse\Compiler\bin\Debug\RE2DFA.pdb
+G:\CCProject\C#\OurEclipse\Compiler\bin\Debug\RE2DFA.exe.config
+G:\CCProject\C#\OurEclipse\Compiler\bin\Debug\Lexical_Analyzer.pdb
+G:\CCProject\C#\OurEclipse\Compiler\bin\Debug\Lexical_Analyzer.exe.config
+G:\CCProject\C#\OurEclipse\Compiler\obj\Debug\Compiler.csprojResolveAssemblyReference.cache
+G:\CCProject\C#\OurEclipse\Compiler\obj\Debug\Compiler.csproj.CoreCompileInputs.cache
+G:\CCProject\C#\OurEclipse\Compiler\obj\Debug\Compiler.csproj.CopyComplete
+G:\CCProject\C#\OurEclipse\Compiler\obj\Debug\Compiler.dll
+G:\CCProject\C#\OurEclipse\Compiler\obj\Debug\Compiler.pdb

@@ -8,3 +8,10 @@ C:\Users\bao\Source\Repos\OurEclipse\trunk\ConsoleApp1\bin\Debug\RE2DFA.exe
 C:\Users\bao\Source\Repos\OurEclipse\trunk\ConsoleApp1\bin\Debug\RE2DFA.pdb
 C:\Users\bao\Source\Repos\OurEclipse\trunk\ConsoleApp1\obj\Debug\RE2DFA.exe
 C:\Users\bao\Source\Repos\OurEclipse\trunk\ConsoleApp1\obj\Debug\RE2DFA.pdb
+G:\CCProject\C#\OurEclipse\ConsoleApp1\bin\Debug\RE2DFA.exe.config
+G:\CCProject\C#\OurEclipse\ConsoleApp1\bin\Debug\RE2DFA.exe
+G:\CCProject\C#\OurEclipse\ConsoleApp1\bin\Debug\RE2DFA.pdb
+G:\CCProject\C#\OurEclipse\ConsoleApp1\obj\Debug\RE2DFA.csprojResolveAssemblyReference.cache
+G:\CCProject\C#\OurEclipse\ConsoleApp1\obj\Debug\RE2DFA.csproj.CoreCompileInputs.cache
+G:\CCProject\C#\OurEclipse\ConsoleApp1\obj\Debug\RE2DFA.exe
+G:\CCProject\C#\OurEclipse\ConsoleApp1\obj\Debug\RE2DFA.pdb

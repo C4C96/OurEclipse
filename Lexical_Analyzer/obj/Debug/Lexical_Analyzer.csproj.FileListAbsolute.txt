@@ -16,3 +16,14 @@ C:\Users\bao\Source\Repos\OurEclipse\trunk\Lexical_Analyzer\bin\Debug\RE2DFA.exe
 C:\Users\bao\Source\Repos\OurEclipse\trunk\Lexical_Analyzer\obj\Debug\Lexical_Analyzer.csprojResolveAssemblyReference.cache
 C:\Users\bao\Source\Repos\OurEclipse\trunk\Lexical_Analyzer\obj\Debug\Lexical_Analyzer.exe
 C:\Users\bao\Source\Repos\OurEclipse\trunk\Lexical_Analyzer\obj\Debug\Lexical_Analyzer.pdb
+G:\CCProject\C#\OurEclipse\Lexical_Analyzer\bin\Debug\Lexical_Analyzer.exe.config
+G:\CCProject\C#\OurEclipse\Lexical_Analyzer\bin\Debug\Lexical_Analyzer.exe
+G:\CCProject\C#\OurEclipse\Lexical_Analyzer\bin\Debug\Lexical_Analyzer.pdb
+G:\CCProject\C#\OurEclipse\Lexical_Analyzer\bin\Debug\RE2DFA.exe
+G:\CCProject\C#\OurEclipse\Lexical_Analyzer\bin\Debug\RE2DFA.pdb
+G:\CCProject\C#\OurEclipse\Lexical_Analyzer\bin\Debug\RE2DFA.exe.config
+G:\CCProject\C#\OurEclipse\Lexical_Analyzer\obj\Debug\Lexical_Analyzer.csprojResolveAssemblyReference.cache
+G:\CCProject\C#\OurEclipse\Lexical_Analyzer\obj\Debug\Lexical_Analyzer.csproj.CoreCompileInputs.cache
+G:\CCProject\C#\OurEclipse\Lexical_Analyzer\obj\Debug\Lexical_Analyzer.csproj.CopyComplete
+G:\CCProject\C#\OurEclipse\Lexical_Analyzer\obj\Debug\Lexical_Analyzer.exe
+G:\CCProject\C#\OurEclipse\Lexical_Analyzer\obj\Debug\Lexical_Analyzer.pdb
