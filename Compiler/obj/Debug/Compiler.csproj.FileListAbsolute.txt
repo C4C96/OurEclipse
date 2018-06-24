@@ -1,0 +1,6 @@
+C:\Users\huishi\Desktop\OurEclipse-master\OurEclipse-master\Compiler\bin\Debug\Compiler.dll
+C:\Users\huishi\Desktop\OurEclipse-master\OurEclipse-master\Compiler\bin\Debug\Compiler.pdb
+C:\Users\huishi\Desktop\OurEclipse-master\OurEclipse-master\Compiler\obj\Debug\Compiler.csprojAssemblyReference.cache
+C:\Users\huishi\Desktop\OurEclipse-master\OurEclipse-master\Compiler\obj\Debug\Compiler.csproj.CoreCompileInputs.cache
+C:\Users\huishi\Desktop\OurEclipse-master\OurEclipse-master\Compiler\obj\Debug\Compiler.dll
+C:\Users\huishi\Desktop\OurEclipse-master\OurEclipse-master\Compiler\obj\Debug\Compiler.pdb
