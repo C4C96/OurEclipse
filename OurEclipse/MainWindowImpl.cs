@@ -245,6 +245,7 @@ namespace OurEclipse
 			FirstTableDataGrid.ItemsSource = result.First;
 			FollowTableDataGrid.ItemsSource = result.Follow;
 			ASTView.ItemsSource = new List<Node>() { result.Root };
+			ArithResultDataGrid.ItemsSource = result.ArithResult;
 		}
 
 		#endregion

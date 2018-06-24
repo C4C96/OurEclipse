@@ -147,7 +147,20 @@
                 </Grid.RowDefinitions>
                 <c:CodeBox Name="CodeBox" Grid.Row="0" TextWrapping="Wrap" LineNumberMarginWidth="27"/>
                 <GridSplitter Grid.Row="1" Height="5" HorizontalAlignment="Stretch"/>
-                <TextBox Name="ErrorInfoTextBox" Grid.Row="2" IsReadOnly="True" VerticalScrollBarVisibility="Auto" Text="Output infomation" />
+                <TabControl Grid.Row="2" TabStripPlacement="Bottom">
+                    <TabItem Header="错误列表" >
+                        <TextBox Grid.Row="2" IsReadOnly="True" VerticalScrollBarVisibility="Auto" Text="Output infomation" />
+                    </TabItem>
+                    <TabItem Header="计算结果">
+                        <DataGrid Name="ArithResultDataGrid" CanUserAddRows="False" IsReadOnly="True" AutoGenerateColumns="False">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="符号" Width="auto" MinWidth="70" Binding="{Binding Item1}"/>
+                                <DataGridTextColumn Header="值" Width="*" Binding="{Binding Item2}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </TabItem>
+                </TabControl>
+                
             </Grid>
             <GridSplitter Grid.Column="1" Width="5" VerticalAlignment="Stretch" HorizontalAlignment="Center"/>
             <TabControl Grid.Column="2" TabStripPlacement="Right">
@@ -182,9 +195,6 @@
                             <DataGridTextColumn Header="Follow集" Width="*" Binding="{Binding Value, Converter={StaticResource List2StrConventer},Mode=OneWay}"/>
                         </DataGrid.Columns>
                     </DataGrid>
-                </TabItem>
-                <TabItem Header="LL分析表">
-
                 </TabItem>
                 <TabItem Header="语法生成树">
                     <TreeView Name="ASTView">

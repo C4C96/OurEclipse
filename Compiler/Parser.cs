@@ -482,7 +482,7 @@ namespace Compiler
                 id.value = value;
                 arithResult.Add(Tuple.Create<string, string>(id.Lexeme, value));
                 //在符号表相应位置插入该变量的值
-                List<string> tmp = n.Children[1].Environment.get(n.Children[1].Lexeme);
+                List<string> tmp = n.Children[0].Environment.get(n.Children[1].Lexeme);
                 if (tmp != null)
                 {
                     tmp[1] = value;
