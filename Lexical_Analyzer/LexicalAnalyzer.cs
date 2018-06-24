@@ -52,7 +52,7 @@ namespace Lexical_Analyzer
         bool nextToken(String code,ref int startPos)
         {
             int index;
-            while (startPos < code.Length && (code[startPos] == ' ' || code[startPos] == '\r' || code[startPos] == '\n'))
+            while (startPos < code.Length && (code[startPos] == ' ' || code[startPos] == '\r' || code[startPos] == '\n' || code[startPos] == '\t'))
             {
                 if (code[startPos] == '\n')
                 {
