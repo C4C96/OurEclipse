@@ -11,8 +11,8 @@ namespace Compiler
     {
         public List<string> nonTerminalSet = new List<string>();
         public List<string> terminalSet = new List<string>();
-        private Dictionary<string, List<string>> firstMap = new Dictionary<string, List<string>>();
-        private Dictionary<string, List<string>> followMap = new Dictionary<string, List<string>>();
+        public Dictionary<string, List<string>> firstMap = new Dictionary<string, List<string>>();
+        public Dictionary<string, List<string>> followMap = new Dictionary<string, List<string>>();
         private Dictionary<string, List<string>> LLGrammar = new Dictionary<string, List<string>>();
         public Dictionary<string, List<Dictionary<string, string>>> table = new Dictionary<string, List<Dictionary<string, string>>>();//储存表格，第一个string是最左侧的列名，第二个string是最上方的行名，第三个string是这个位置该填的语句
 

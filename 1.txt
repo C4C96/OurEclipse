@@ -1,0 +1,27 @@
+﻿program → importDeclaration classDeclaration
+importDeclaration → import ID ;
+classDeclaration → classModifiers class ID compoundstmt
+classModifiers → classModifier classModifiers | ε
+classModifier → public | protected | private | static | final
+compoundstmt →  { stmts }
+stmts →  stmt stmts | ε
+stmt →  ifstmt  |  whilestmt  |  assgstmt  |  compoundstmt | variableDeclaration |  doStatement  | returnStatement 
+variableDeclaration → numericType ID  assgValue  ;
+assgValue → = simpleexpr | ε 
+numericType →integralType  | floatingPointType
+integralType → int | long
+floatingPointType → double | float
+ifstmt →  if ( boolexpr ) then stmt else stmt
+whilestmt →  while ( boolexpr ) stmt
+doStatement → do  stmt  while (  boolexpr )
+returnStatement → return returnstmt
+returnstmt → arithexpr | ε ;
+assgstmt →  ID assignmentOperator arithexpr ;
+boolexpr  →  arithexpr boolop arithexpr
+boolop →  <  |  >  |  <=  |  >=  | ==  | !=
+assignmentOperator → = | *=  | /=  | += | -=
+arithexpr  →  multexpr arithexprprime
+arithexprprime →  + multexpr arithexprprime  |  - multexpr arithexprprime  |   ε
+multexpr →  simpleexpr  multexprprime
+multexprprime →  * simpleexpr multexprprime  |  / simpleexpr multexprprime  |   ε
+simpleexpr →  ID  |  NUM  |  ( arithexpr ) 

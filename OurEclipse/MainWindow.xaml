@@ -9,12 +9,15 @@
         mc:Ignorable="d"
         Title="Our Eclipse" Height="450" Width="800">
     <Window.Resources>
+        <local:List2StrConventer x:Key="List2StrConventer" />
         <RoutedUICommand x:Key="Comment" Text="注释"/>
         <RoutedUICommand x:Key="Uncomment" Text="取消注释"/>
+        <RoutedUICommand x:Key="Run" Text="启动" />
     </Window.Resources>
     <Window.InputBindings>
         <KeyBinding Gesture="Ctrl+Alt+S" Command="SaveAs"/>
         <KeyBinding Gesture="Alt+F4" Command="Close"/>
+        <KeyBinding Gesture="F5"  Command="{StaticResource Run}"/>
     </Window.InputBindings>
     <Window.CommandBindings>
         <CommandBinding Command="New" CanExecute="CommandCanExecute" Executed="CommandExecute"/>
@@ -34,6 +37,7 @@
 
         <CommandBinding Command="{StaticResource Comment}" CanExecute="CommandCanExecute" Executed="CommandExecute"/>
         <CommandBinding Command="{StaticResource Uncomment}" CanExecute="CommandCanExecute" Executed="CommandExecute"/>
+        <CommandBinding Command="{StaticResource Run}" CanExecute="CommandCanExecute" Executed="CommandExecute"/>
     </Window.CommandBindings>
     <DockPanel LastChildFill="True">
         <Menu DockPanel.Dock="Top">
@@ -103,6 +107,14 @@
                     <Image Source="icon/UnCommentCode_16x.png"/>
                 </Button>
             </ToolBar>
+            <ToolBar>
+                <Button ToolTip="启动" Command="{StaticResource Run}">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="icon/Run_16x.png" />
+                        <TextBlock Text="启动"/>
+                    </StackPanel>
+                </Button>
+            </ToolBar>
         </ToolBarTray>
         <StatusBar DockPanel.Dock="Bottom" VerticalAlignment="Bottom">
             <StatusBarItem Name="StateSBI" Content="就绪" Width="100"/>
@@ -156,18 +168,18 @@
                     </Style>
                 </TabControl.Resources>
                 <TabItem Header="First Table">
-                    <DataGrid CanUserAddRows="False" IsReadOnly="True">
+                    <DataGrid Name="FirstTableDataGrid" CanUserAddRows="False" IsReadOnly="True" AutoGenerateColumns="False">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="符号" Width="*"/>
-                            <DataGridTextColumn Header="First集" Width="*"/>
+                            <DataGridTextColumn Header="符号" Width="*" Binding="{Binding Key}"/>
+                            <DataGridTextColumn Header="First集" Width="*" Binding="{Binding Value, Converter={StaticResource List2StrConventer},Mode=OneWay}"/>
                         </DataGrid.Columns>
                     </DataGrid>
                 </TabItem>
                 <TabItem Header="Follow Table">
-                    <DataGrid>
+                    <DataGrid Name="FollowTableDataGrid" CanUserAddRows="False" IsReadOnly="True" AutoGenerateColumns="False">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="符号" Width="*"/>
-                            <DataGridTextColumn Header="Follow集" Width="*"/>
+                            <DataGridTextColumn Header="符号" Width="*" Binding="{Binding Key}"/>
+                            <DataGridTextColumn Header="Follow集" Width="*" Binding="{Binding Value, Converter={StaticResource List2StrConventer},Mode=OneWay}"/>
                         </DataGrid.Columns>
                     </DataGrid>
                 </TabItem>

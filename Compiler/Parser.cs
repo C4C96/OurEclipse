@@ -67,10 +67,24 @@ namespace Compiler
 
                 if (!terminalSet.Contains(X))
                 {
-                    sentence = find(X, list[i].value);
+					if(list[i].property=="ID" || list[i].property=="NUM")
+						sentence = find(X, list[i].property);
+					else
+						sentence = find(X, list[i].value);
                 }
-                //Console.WriteLine(X + " " + list[i]);
-                if (X == list[i].value)//X=当前指向的符号a
+				//Console.WriteLine(X + " " + list[i]);
+				string terminalVal = "";
+				if (list[i].property == "NUM" || list[i].property == "ID")
+					terminalVal = list[i].property;
+				else
+					terminalVal = list[i].value;
+
+				if(list[i].value=="{")
+				{
+					int b = 0;
+				}
+
+                if (X == terminalVal)//X=当前指向的符号a
                 {
                     if (X == "{")//建立符号表，每遇到一个{}，新建一个符号表
                     {
@@ -166,7 +180,7 @@ namespace Compiler
                 }
                 else if (sentence == "Error")//[X,a]是一个报错条目
                 {
-                    //checkStack(stack);
+                    checkStack(stack);
                     //error(lineNum, i);
                     Errors.Add(new ErrorInfo(list[i].line, list[i].column, 0, ""));
                     stack.Pop();
@@ -221,21 +235,21 @@ namespace Compiler
         {
             string sentence = "";
             List<Dictionary<string, string>> textline = new List<Dictionary<string, string>>();
-            table.TryGetValue(symbol, out textline);
-            foreach (var item in textline)
-            {
-                foreach (var dic in item)
-                {
-                    if (dic.Key == terminal)
-                    {
-                        sentence = dic.Value;
-                        //Console.WriteLine(symbol +" "+ sentence);
-                        constructTree(symbol, cut(sentence));
+            if (table.TryGetValue(symbol, out textline))
+				foreach (var item in textline)
+				{
+					foreach (var dic in item)
+					{
+						if (dic.Key == terminal)
+						{
+							sentence = dic.Value;
+							//Console.WriteLine(symbol +" "+ sentence);
+							constructTree(symbol, cut(sentence));
 
-                        return sentence;
-                    }
-                }
-            }
+							return sentence;
+						}
+					}
+				}
             return "Error";
         }
 
