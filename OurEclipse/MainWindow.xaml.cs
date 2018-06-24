@@ -80,6 +80,8 @@ namespace OurEclipse
 				Comment();
 			else if (e.Command == TryFindResource("Uncomment"))
 				Uncomment();
+			else if (e.Command == TryFindResource("Run"))
+				RunAsync();
 			else
 				e.Handled = false;
 		}

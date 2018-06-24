@@ -1,5 +1,7 @@
-﻿using Microsoft.Win32;
+﻿using Compiler;
+using Microsoft.Win32;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Windows;
@@ -222,6 +224,27 @@ namespace OurEclipse
 				CodeBox.SelectedText = sb.ToString();
 				CodeBox.textChangedEnable = true;
 			}
+		}
+
+		#endregion
+
+		#region Run
+
+		private ParserAdapter parserAdapter;
+
+		/// <summary>
+		/// 启动编译
+		/// </summary>
+		private async void RunAsync()
+		{
+			if (parserAdapter == null)
+				parserAdapter = new ParserAdapter();
+			var result = await parserAdapter.Compile(CodeBox.Text, 
+													rulePath: @"G:\CCProject\C#\OurEclipse\LexicalRules.rules", 
+													CFGPath: @"G:\CCProject\C#\OurEclipse\1.txt");
+			FirstTableDataGrid.ItemsSource = result.First;
+			FollowTableDataGrid.ItemsSource = result.Follow;
+			ASTView.ItemsSource = new List<Node>() { result.Root };
 		}
 
 		#endregion
