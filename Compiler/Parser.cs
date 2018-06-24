@@ -24,8 +24,9 @@ namespace Compiler
         private Stack<Node> IDNodes = new Stack<Node>();//用来对树中内容为ID的节点进行词位的赋值
         private Stack<Node> NUMNodes = new Stack<Node>();//用来对树中内容为NUM的节点进行词位的赋值
         private int row = 0, col = 0;
-        public List<List<string>> arithResult = new List<List<string>>();
+        //public List<List<string>> arithResult = new List<List<string>>();
         public List<ErrorInfo> Errors = new List<ErrorInfo>();
+        public List<Tuple<string,string>> arithResult = new List<Tuple<string,string>>();
 
         public Parser(List<string> nonT, List<string> T, Dictionary<string, List<Dictionary<string, string>>> tab, List<LexicalData> input)
         {
@@ -78,12 +79,7 @@ namespace Compiler
 					terminalVal = list[i].property;
 				else
 					terminalVal = list[i].value;
-
-				if(list[i].value=="{")
-				{
-					int b = 0;
-				}
-
+                
                 if (X == terminalVal)//X=当前指向的符号a
                 {
                     if (X == "{")//建立符号表，每遇到一个{}，新建一个符号表
@@ -426,7 +422,7 @@ namespace Compiler
                 {
                     id.value = value;
                     //Console.WriteLine(id.Lexeme + " " + value);
-                    arithResult.Add(new List<string> {id.Lexeme,value });
+                    arithResult.Add(Tuple.Create<string,string>(id.Lexeme,value));
                     //在符号表相应位置插入该变量的值
                     List<string> tmp = n.Children[1].Environment.get(n.Children[1].Lexeme);
                     if (tmp != null)
@@ -477,7 +473,7 @@ namespace Compiler
             if (checkType(id, value))//如果等号左右类型匹配或者可以隐式转换
             {
                 id.value = value;
-                arithResult.Add(new List<string> { id.Lexeme, value });
+                arithResult.Add(Tuple.Create<string, string>(id.Lexeme, value));
                 //在符号表相应位置插入该变量的值
                 List<string> tmp = n.Children[1].Environment.get(n.Children[1].Lexeme);
                 if (tmp != null)

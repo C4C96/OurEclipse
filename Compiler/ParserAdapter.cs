@@ -30,7 +30,11 @@ namespace Compiler
                 PR.Follow = llgrammar.followMap;
                 PR.Table = llgrammar.table;
                 PR.Root = parser.root;
-                PR.ArithResult = ArithResult();
+                if(Errors!=null)
+                {
+                    PR.ArithResult = ArithResult();
+                }
+                
                 return PR ; 
             });
         }
