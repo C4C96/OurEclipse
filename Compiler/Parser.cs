@@ -46,7 +46,7 @@ namespace Compiler
 
             step(Token);
             //Console.WriteLine(root.children.Count);
-            root.print(root);
+            //root.print(root);
 
         }
         public void step(List<LexicalData> list)
@@ -68,18 +68,25 @@ namespace Compiler
 
                 if (!terminalSet.Contains(X))
                 {
-					if(list[i].property=="ID" || list[i].property=="NUM")
+					if (list[i].property == "Num")
+						sentence = find(X, "NUM");
+					else if (list[i].property == "ID")
 						sentence = find(X, list[i].property);
 					else
 						sentence = find(X, list[i].value);
-                }
+				}
 				//Console.WriteLine(X + " " + list[i]);
 				string terminalVal = "";
-				if (list[i].property == "NUM" || list[i].property == "ID")
-					terminalVal = list[i].property;
+				if (list[i].property == "Num" )
+					terminalVal = "NUM";
+				else if(list[i].property == "ID")
+					terminalVal = "ID";
 				else
 					terminalVal = list[i].value;
-                
+
+
+				Console.WriteLine(X + "   " + terminalVal);
+				
                 if (X == terminalVal)//X=当前指向的符号a
                 {
                     if (X == "{")//建立符号表，每遇到一个{}，新建一个符号表
