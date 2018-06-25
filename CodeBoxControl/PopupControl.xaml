@@ -6,44 +6,30 @@
              xmlns:local="clr-namespace:CodeBoxControl"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
-             StaysOpen="False">
-    <Popup.Resources>
-        <local:ImageSourceConventer x:Key="ImageSourceConventer"/>
-    </Popup.Resources>
-    <ListBox Name="ListBox" 
-             Height="auto" MaxHeight="144" Width="200"
-             SelectionChanged="ListBox_SelectionChanged">
-        <!--设置Item样式-->
-        <ListBox.ItemTemplate>
-            <DataTemplate DataType="ListBoxItem">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="auto"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <Image Margin="0,0,3,0" Grid.Column="0" Source="{Binding Type, Converter={StaticResource ImageSourceConventer},Mode=OneWay}"/>
-                    <TextBlock Grid.Column="1" Text="{Binding Name}" />
-                </Grid>
-            </DataTemplate>
-        </ListBox.ItemTemplate>
-        <ListBox.ItemContainerStyle>
-            <Style TargetType="ListBoxItem">
-                <Setter Property="Template">
-                    <Setter.Value>
-                        <ControlTemplate TargetType="ListBoxItem">
-                            <Border Name="Bd">
-                                <ContentPresenter />
-                            </Border>
-                            <ControlTemplate.Triggers>
-                                <Trigger Property="IsSelected" Value="True">
-                                    <Setter TargetName="Bd" Property="Background" Value="#007ACC"/>
-                                    <Setter Property="Foreground" Value="White"/>
-                                </Trigger>
-                            </ControlTemplate.Triggers>
-                        </ControlTemplate>
-                    </Setter.Value>
-                </Setter>
-            </Style>
-        </ListBox.ItemContainerStyle>
-    </ListBox>
+             StaysOpen="False" Focusable="False">
+    <ScrollViewer MaxHeight="144" Name="ScrollViewer">
+        <ListBox Name="ListBox" 
+                 Height="auto" Width="200" SelectionChanged="ListBox_SelectionChanged">
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="ListBoxItem">
+                    <Setter Property="Height" Value="15" />
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="ListBoxItem">
+                                <Border Name="Bd">
+                                    <ContentPresenter />
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsSelected" Value="True">
+                                        <Setter TargetName="Bd" Property="Background" Value="#007ACC"/>
+                                        <Setter Property="Foreground" Value="White"/>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </ListBox.ItemContainerStyle>
+        </ListBox>
+    </ScrollViewer>
 </Popup>
