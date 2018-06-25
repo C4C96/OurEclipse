@@ -27,18 +27,6 @@ namespace OurEclipse
 				SelectionLengthSBI.Content = CodeBox.SelectionLength;
 			};
 			CodeBox.DecorationScheme = CodeBoxControl.Decorations.DecorationSchemes.Java;
-			CodeBox.Decorations.Add(new CodeBoxControl.Decorations.MultiRegexWordDecoration
-			{
-				Brush = new SolidColorBrush(Color.FromArgb(30, 0, 0, 255)),
-				DecorationType = CodeBoxControl.Decorations.EDecorationType.Hilight,
-				Words = new System.Collections.Generic.List<string>() { "abc" }
-			});
-			CodeBox.Decorations.Add(new CodeBoxControl.Decorations.MultiRegexWordDecoration
-			{
-				Brush = new SolidColorBrush(Color.FromArgb(255, 255, 0, 0)),
-				DecorationType = CodeBoxControl.Decorations.EDecorationType.Underline,
-				Words = new System.Collections.Generic.List<string>() { "def" }
-			});
 		}
 		
 		private void CommandCanExecute(object sender, CanExecuteRoutedEventArgs e)

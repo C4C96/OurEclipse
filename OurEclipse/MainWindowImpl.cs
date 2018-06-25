@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Windows;
+using System.Windows.Media;
 
 namespace OurEclipse
 {
@@ -237,6 +238,7 @@ namespace OurEclipse
 		/// </summary>
 		private async void RunAsync()
 		{
+			StateSBI.Content = "编译中...";
 			if (parserAdapter == null)
 				parserAdapter = new ParserAdapter();
 			var result = await parserAdapter.Compile(CodeBox.Text, 
@@ -246,6 +248,23 @@ namespace OurEclipse
 			FollowTableDataGrid.ItemsSource = result.Follow;
 			ASTView.ItemsSource = new List<Node>() { result.Root };
 			ArithResultDataGrid.ItemsSource = result.ArithResult;
+			ErrorDataGrid.ItemsSource = result.Errors;
+
+			var pairDecoration = new CodeBoxControl.Decorations.PairDecoration()
+			{
+				DecorationType = CodeBoxControl.Decorations.EDecorationType.Underline,
+				Brush = new SolidColorBrush(Color.FromArgb(255, 255, 0, 0)),
+			};
+			foreach (var error in result.Errors)
+			{
+				int offset = CodeBox.GetCharacterIndexFromLineIndex(error.Row - 1) + error.Col - 1;
+				pairDecoration.Pairs.Add(new CodeBoxControl.Pair(offset, error.WordLength));
+			}
+			CodeBox.Decorations.Clear();
+			CodeBox.Decorations.Add(pairDecoration);
+			CodeBox.InvalidateVisual();
+
+			StateSBI.Content = "就绪";
 		}
 
 		#endregion

@@ -259,7 +259,7 @@ namespace CodeBoxControl.Decorations
 			}
 		}
 
-		private static List<string> JavaReservedWords()
+		public static List<string> JavaReservedWords()
 		{
 			return new List<string>() { "abstract",	"assert",	"boolean",	"break",	"byte" ,
 										"case",		"catch",	"char",		"class",	"const",

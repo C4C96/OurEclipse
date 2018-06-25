@@ -8,7 +8,7 @@ compoundstmt →  { stmts }
 stmts →  stmt stmts | ε
 stmt →  ifstmt  |  whilestmt  |  assgstmt  |  compoundstmt | variableDeclaration |  doStatement  | returnStatement
 variableDeclaration → numericType ID  assgValue  ;
-assgValue → = simpleexpr | ε;
+assgValue → = simpleexpr  | ε 
 numericType →integralType  | floatingPointType
 integralType → int | long
 floatingPointType → double | float

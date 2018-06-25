@@ -76,23 +76,30 @@ namespace CodeBoxControl
 					case Key.Up:
 						if (popup.ListBox.SelectedIndex > 0)
 							popup.ListBox.SelectedIndex--;
+						else
+							popup.ListBox.SelectedIndex = popup.ListBox.Items.Count - 1;
 						e.Handled = true;
 						break;
 					case Key.Down:
 						if (popup.ListBox.SelectedIndex < popup.ListBox.Items.Count - 1)
 							popup.ListBox.SelectedIndex++;
+						else
+							popup.ListBox.SelectedIndex = 0;
 						e.Handled = true;
 						break;
 					case Key.Enter:
-						int inputlast;
-						for (inputlast = popup.Offset; inputlast < Text.Length && char.IsLetterOrDigit(Text[inputlast]); inputlast++) ;
 						popup.IsOpen = false;
-						string token = (popup.ListBox.SelectedItem as PopupControl.Token).Name;
-						textChangedEnable = false;
-						Text = Text.Remove(popup.Offset, inputlast - popup.Offset)
-									.Insert(popup.Offset, token);
-						textChangedEnable = true;
-						CaretIndex = popup.Offset + token.Length;
+						string token = popup.ListBox.SelectedItem as string;
+						if (token != null)
+						{
+							int inputlast;
+							for (inputlast = popup.Offset; inputlast < Text.Length && char.IsLetterOrDigit(Text[inputlast]); inputlast++) ;
+							textChangedEnable = false;
+							Text = Text.Remove(popup.Offset, inputlast - popup.Offset)
+										.Insert(popup.Offset, token);
+							textChangedEnable = true;
+							CaretIndex = popup.Offset + token.Length;
+						}
 						e.Handled = true;
 						break;
 					case Key.Escape:

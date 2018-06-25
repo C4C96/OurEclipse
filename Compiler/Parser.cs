@@ -59,12 +59,12 @@ namespace Compiler
             {
                 int lineNum = list[i].line;
                 row = list[i].line;
-                col = list[i].column; 
-                //if (X == "$")
-                //    return;
+                col = list[i].column;
+				if (X == "$")
+					return;
 
-                //当前单词的具体内容（主要针对ID和NUM的具体内容）
-                string info = list[i].value;
+				//当前单词的具体内容（主要针对ID和NUM的具体内容）
+				string info = list[i].value;
                 variable = info;
 
                 if (!terminalSet.Contains(X))
@@ -432,10 +432,10 @@ namespace Compiler
         {
             //variableDeclaration → numericType ID  assgValue ;
             Node id = n.Children[1];
-            if (n.Children[2].Children.Count == 1)
-                return;
-            else
-            {
+            //if (n.Children[2].Children.Count == 1)
+            //    return;
+            //else
+            //{
                 string value = "";
                 value = getAssgValue(n.Children[2]);
                 if (checkType(id, value))//如果等号左右类型匹配或者可以隐式转换
@@ -457,7 +457,7 @@ namespace Compiler
                     Errors.Add(new ErrorInfo(id.row, id.col, id.Lexeme.Length, ""));
                 }
 
-            }
+            //}
         }
 
         public void handleAssgstmt(Node n)
@@ -511,13 +511,16 @@ namespace Compiler
 
         private string getAssgValue(Node n)
         {
-            //assgValue → = simpleexpr | ε;
-            if (n.Children.Count != 1)
+			//assgValue → = simpleexpr  | ε 
+			if (n.Children.Count == 2)
             {
                 return getSimpleexprValue(n.Children[1]);
             }
-
-            return "";
+			else 
+			{
+				return "0";
+			}
+			
         }
 
         private string getSimpleexprValue(Node n)

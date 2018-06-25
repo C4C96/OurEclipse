@@ -149,7 +149,13 @@
                 <GridSplitter Grid.Row="1" Height="5" HorizontalAlignment="Stretch"/>
                 <TabControl Grid.Row="2" TabStripPlacement="Bottom">
                     <TabItem Header="错误列表" >
-                        <TextBox Grid.Row="2" IsReadOnly="True" VerticalScrollBarVisibility="Auto" Text="Output infomation" />
+                        <DataGrid Name="ErrorDataGrid" CanUserAddRows="False" IsReadOnly="True" AutoGenerateColumns="False">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="行" Width="auto" MinWidth="40" Binding="{Binding Row}"/>
+                                <DataGridTextColumn Header="列" Width="auto" MinWidth="40" Binding="{Binding Col}"/>
+                                <DataGridTextColumn Header="说明" Width="*" Binding="{Binding ErrorString}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
                     </TabItem>
                     <TabItem Header="计算结果">
                         <DataGrid Name="ArithResultDataGrid" CanUserAddRows="False" IsReadOnly="True" AutoGenerateColumns="False">
@@ -199,8 +205,12 @@
                 <TabItem Header="语法生成树">
                     <TreeView Name="ASTView">
                         <TreeView.ItemTemplate>
-                            <HierarchicalDataTemplate ItemsSource="{Binding Path=Children}">
-                                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Stretch" Text="{Binding Symbol}"/>
+                            <HierarchicalDataTemplate ItemsSource="{Binding Children}">
+                                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Stretch" Text="{Binding Symbol}" ToolTipService.IsEnabled="{Binding IsLeaf}">
+                                    <TextBlock.ToolTip>
+                                        <ToolTip Content="{Binding Lexeme}" />
+                                    </TextBlock.ToolTip>
+                                </TextBlock>
                             </HierarchicalDataTemplate>
                         </TreeView.ItemTemplate>
                     </TreeView>
