@@ -30,6 +30,7 @@ namespace Compiler
                 PR.Follow = llgrammar.followMap;
                 PR.Table = llgrammar.table;
                 PR.Root = parser.root;
+                PR.IDs = parser.IDs;
                 if(Errors!=null)
                 {
                     PR.ArithResult = ArithResult();
@@ -84,6 +85,7 @@ namespace Compiler
             public Dictionary<string, List<Dictionary<string, string>>> Table { get; set; }
             public Node Root { get; set; }
             public List<Tuple<string,string>> ArithResult { get; set; }
+            public List<string> IDs { get; set; }
         }
     }
 }

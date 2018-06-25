@@ -27,6 +27,7 @@ namespace Compiler
         //public List<List<string>> arithResult = new List<List<string>>();
         public List<ErrorInfo> Errors = new List<ErrorInfo>();
         public List<Tuple<string,string>> arithResult = new List<Tuple<string,string>>();
+        public List<string> IDs = new List<string>();
 
         public Parser(List<string> nonT, List<string> T, Dictionary<string, List<Dictionary<string, string>>> tab, List<LexicalData> input)
         {
@@ -341,7 +342,10 @@ namespace Compiler
         public void insertToTable(string var, string type)
         {
             if (!currentEnv.HasItem(var))
+            {
                 currentEnv.add(var, type);
+                IDs.Add(var);
+            }
             else
             {
                 //Console.WriteLine("出错啦!第 " + row + " 行，第 " + col + " 列" + " 重复的定义");
