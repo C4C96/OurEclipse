@@ -175,7 +175,7 @@ namespace Compiler
                     //error(lineNum, i);
                     //Console.Write(X + " " + list[i] + " ");
                     //Console.WriteLine("这里应该有 " + X);
-                    Errors.Add(new ErrorInfo(list[i].line, list[i].column, 0, ""));
+                    Errors.Add(new ErrorInfo(list[i].line, list[i].column, list[i].value.Length, ""));
                     stack.Pop();
                     X = stack.Peek();
                     //i++;
@@ -185,7 +185,7 @@ namespace Compiler
                 {
                     checkStack(stack);
                     //error(lineNum, i);
-                    Errors.Add(new ErrorInfo(list[i].line, list[i].column, 0, ""));
+                    Errors.Add(new ErrorInfo(list[i].line, list[i].column, list[i].value.Length, ""));
                     stack.Pop();
                     X = stack.Peek();
                     i++;
@@ -283,16 +283,25 @@ namespace Compiler
                                 if (s == "ID")//记录下产生ID的产生式，放入栈中，当下次匹配到ID时，就可以找到这个节点的位置
                                 {
                                     IDNodes.Push(currentNode);
-                                    currentNode.Add(new Node(s));
+                                    Node tmp = new Node(s);
+                                    tmp.row = row;
+                                    tmp.col = col;
+                                    currentNode.Add(tmp);
                                 }
                                 else if (s == "NUM")
                                 {
                                     NUMNodes.Push(currentNode);
-                                    currentNode.Add(new Node(s));
+                                    Node tmp = new Node(s);
+                                    tmp.row = row;
+                                    tmp.col = col;
+                                    currentNode.Add(tmp);
                                 }
                                 else
                                 {
-                                    currentNode.Add(new Node(s, s));
+                                    Node tmp = new Node(s,s);
+                                    tmp.row = row;
+                                    tmp.col = col;
+                                    currentNode.Add(tmp);
                                 }
                             }
                             else
@@ -336,7 +345,7 @@ namespace Compiler
             else
             {
                 //Console.WriteLine("出错啦!第 " + row + " 行，第 " + col + " 列" + " 重复的定义");
-                Errors.Add(new ErrorInfo(row, col, 0, ""));
+                Errors.Add(new ErrorInfo(row, var.Length, 0, ""));
             }
         }
 
@@ -346,7 +355,7 @@ namespace Compiler
             if (list == null)
             {
                 //Console.WriteLine("出错啦!第 " + idNode.row + " 行，第 " + idNode.col + " 列" + " 变量未被定义");
-                Errors.Add(new ErrorInfo(idNode.row, idNode.col, 0, ""));
+                Errors.Add(new ErrorInfo(idNode.row, idNode.col, idNode.Lexeme.Length, ""));
                 return false;
             }
             else
@@ -441,7 +450,7 @@ namespace Compiler
                 {
                     //Error
                     //Console.WriteLine("出错啦!第 " + id.row + " 行，第 " + id.col + " 列" + " 变量类型不匹配");
-                    Errors.Add(new ErrorInfo(id.row, id.col, 0, ""));
+                    Errors.Add(new ErrorInfo(id.row, id.col, id.Lexeme.Length, ""));
                 }
 
             }
@@ -688,7 +697,7 @@ namespace Compiler
             {
                 //变量未被定义，报错
                 //Console.WriteLine("出错啦!第 " + n.row + " 行，第 " + n.col + " 列" + " 变量未被定义");
-                Errors.Add(new ErrorInfo(n.row, n.col, 0, ""));
+                Errors.Add(new ErrorInfo(n.row, n.col, n.Lexeme.Length, ""));
             }
             else
             {
@@ -696,7 +705,7 @@ namespace Compiler
                 {
                     //变量未被赋值，报错
                     //Console.WriteLine("出错啦!第 " + n.row + " 行，第 " + n.col + " 列" + " 变量未被赋值");
-                    Errors.Add(new ErrorInfo(n.row, n.col, 0, ""));
+                    Errors.Add(new ErrorInfo(n.row, n.col, n.Lexeme.Length, ""));
                 }
                 else
                 {
@@ -713,7 +722,7 @@ namespace Compiler
             {
                 //变量未被定义，报错
                 //Console.WriteLine("出错啦!第 " + n.row + " 行，第 " + n.col + " 列" + " 变量未被定义");
-                Errors.Add(new ErrorInfo(n.row, n.col, 0, ""));
+                Errors.Add(new ErrorInfo(n.row, n.col, n.Lexeme.Length, ""));
             }
             else
             {

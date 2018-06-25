@@ -10,15 +10,14 @@ namespace Compiler
 	{
 		public int Row { get; set; }
 		public int Col { get; set; }
-
-		public ErrorType Type { get; set; }
+        public int WordLength { get; set; }
 		public String ErrorString { get; set; }
 
-		public ErrorInfo(int row, int col, ErrorType type, String errorString)
+		public ErrorInfo(int row, int col,int wl, String errorString)
 		{
 			Row = row;
 			Col = col;
-			Type = type;
+            WordLength = wl;
 			ErrorString = errorString;
 		}
 		
@@ -28,14 +27,5 @@ namespace Compiler
 			return base.ToString();
 		}
 
-		/// <summary>
-		/// 错误类型
-		/// </summary>
-		public enum ErrorType
-		{
-			Type1,
-			Type2,
-			Type3,
-		}
 	}
 }
