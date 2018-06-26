@@ -451,6 +451,7 @@ namespace CodeBoxControl
 				List<Geometry> GeomList = geometryDictionary[dec];
 				foreach (Geometry g in GeomList)
 				{
+					if (g == null) continue;
 					g.Transform = new System.Windows.Media.TranslateTransform(renderPoint.X, renderPoint.Y);
 					drawingContext.DrawGeometry(dec.Brush, null, g);
 				}

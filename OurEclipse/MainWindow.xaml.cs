@@ -1,12 +1,8 @@
-﻿using Compiler;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using static CodeBoxControl.PopupControl;
 
 namespace OurEclipse
 {
@@ -86,6 +82,11 @@ namespace OurEclipse
 				if (RedoButton.Content is Image _image)
 					_image.Source = new BitmapImage(new Uri(RedoButton.IsEnabled ? @"icon/Redo_16x.png" : @"icon/Redo_grey_16x.png", UriKind.Relative));
 			}
+		}
+
+		private void About_Click(object sender, RoutedEventArgs e)
+		{
+			MessageBox.Show("组长：赵玉乔\n词法分析：鲍家耕\n语法分析&语义分析：邱汇石&赵玉乔\n界面：陈聪");
 		}
 	}
 }

@@ -1,6 +1,6 @@
 ﻿program → importDeclaration classDeclaration
 importDeclaration → import ID ;
-classDeclaration → classModifiers class ID { variableDeclaration mainDeclaration }
+classDeclaration → classModifiers class ID {  mainDeclaration }
 classModifiers → classModifier classModifiers | ε
 classModifier → public | protected | private | static | final
 mainDeclaration → public static void main ( ID [ ] ID ) compoundstmt 

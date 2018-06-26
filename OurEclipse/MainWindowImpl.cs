@@ -242,13 +242,21 @@ namespace OurEclipse
 			if (parserAdapter == null)
 				parserAdapter = new ParserAdapter();
 			var result = await parserAdapter.Compile(CodeBox.Text, 
-													rulePath: @"G:\CCProject\C#\OurEclipse\LexicalRules.rules", 
-													CFGPath: @"G:\CCProject\C#\OurEclipse\1.txt");
+													Path.RULE_PATH, 
+													Path.CFG_PATH);
 			FirstTableDataGrid.ItemsSource = result.First;
 			FollowTableDataGrid.ItemsSource = result.Follow;
 			ASTView.ItemsSource = new List<Node>() { result.Root };
 			ArithResultDataGrid.ItemsSource = result.ArithResult;
 			ErrorDataGrid.ItemsSource = result.Errors;
+			CodeBox.popup.ClearTokens();
+			foreach (var id in result.IDs)
+			{
+				int index = CodeBox.popup.tokens.BinarySearch(id);
+				if (index < 0)
+					CodeBox.popup.tokens.Insert(~index, id);
+			}
+			CodeBox.popup.RefreshList();
 
 			var pairDecoration = new CodeBoxControl.Decorations.PairDecoration()
 			{

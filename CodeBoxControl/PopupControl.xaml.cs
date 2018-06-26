@@ -10,7 +10,7 @@ namespace CodeBoxControl
 	/// </summary>
 	public partial class PopupControl : Popup
 	{
-		private List<string> tokens = new List<string>();
+		public List<string> tokens = new List<string>();
 		public int Offset { get; set; }
 
 		private string input = string.Empty;
@@ -50,9 +50,14 @@ namespace CodeBoxControl
 			return str1 == str2.Substring(0, str1.Length);
 		}
 
-		private void ClearTokens()
+		public void ClearTokens()
 		{
 			tokens = Decorations.DecorationSchemes.JavaReservedWords();
+		}
+
+		public void RefreshList()
+		{
+			ListBox.ItemsSource = tokens;
 		}
 
 		public PopupControl()

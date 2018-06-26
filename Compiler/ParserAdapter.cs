@@ -22,7 +22,7 @@ namespace Compiler
             return await Task<ParserResult>.Factory.StartNew(() => 
             {
                 GenLLGrammar(CFGPath);
-				llgrammar.result(@"G:\CCProject\C#\OurEclipse\2.txt");
+				// llgrammar.result(@"G:\CCProject\C#\OurEclipse\2.txt");
                 LexicalAnalyze(rulePath,code);
                 Parse();
                 PR.Errors = Errors;

@@ -9,6 +9,7 @@
         mc:Ignorable="d"
         Title="Our Eclipse" Height="450" Width="800">
     <Window.Resources>
+        <local:TreeNodeColorConventer x:Key="TreeNodeColorConventer"/>
         <local:List2StrConventer x:Key="List2StrConventer" />
         <RoutedUICommand x:Key="Comment" Text="注释"/>
         <RoutedUICommand x:Key="Uncomment" Text="取消注释"/>
@@ -64,7 +65,7 @@
                 <MenuItem Header="全选(_A)" Command="SelectAll"/>
             </MenuItem>
             <MenuItem Header="帮助(_H)">
-                <MenuItem Header="关于(_A)..."/>
+                <MenuItem Header="关于(_A)..." Click="About_Click"/>
             </MenuItem>
         </Menu>
         <ToolBarTray DockPanel.Dock="Top">
@@ -108,7 +109,7 @@
                 </Button>
             </ToolBar>
             <ToolBar>
-                <Button ToolTip="启动" Command="{StaticResource Run}">
+                <Button ToolTip="启动(F5)" Command="{StaticResource Run}">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="icon/Run_16x.png" />
                         <TextBlock Text="启动"/>
@@ -152,7 +153,6 @@
                         <DataGrid Name="ErrorDataGrid" CanUserAddRows="False" IsReadOnly="True" AutoGenerateColumns="False">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="行" Width="auto" MinWidth="40" Binding="{Binding Row}"/>
-                                <DataGridTextColumn Header="列" Width="auto" MinWidth="40" Binding="{Binding Col}"/>
                                 <DataGridTextColumn Header="说明" Width="*" Binding="{Binding ErrorString}"/>
                             </DataGrid.Columns>
                         </DataGrid>
@@ -206,7 +206,7 @@
                     <TreeView Name="ASTView">
                         <TreeView.ItemTemplate>
                             <HierarchicalDataTemplate ItemsSource="{Binding Children}">
-                                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Stretch" Text="{Binding Symbol}" ToolTipService.IsEnabled="{Binding IsLeaf}">
+                                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Stretch" Text="{Binding Symbol}" ToolTipService.IsEnabled="{Binding IsLeaf}" Foreground="{Binding Path=IsLeaf,Converter={StaticResource TreeNodeColorConventer},Mode=OneWay}">
                                     <TextBlock.ToolTip>
                                         <ToolTip Content="{Binding Lexeme}" />
                                     </TextBlock.ToolTip>

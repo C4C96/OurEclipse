@@ -349,7 +349,7 @@ namespace Compiler
             else
             {
                 //Console.WriteLine("出错啦!第 " + row + " 行，第 " + col + " 列" + " 重复的定义");
-                Errors.Add(new ErrorInfo(row, var.Length, 0, ""));
+                Errors.Add(new ErrorInfo(row, var.Length, 0, "重复的定义"));
             }
         }
 
@@ -359,7 +359,7 @@ namespace Compiler
             if (list == null)
             {
                 //Console.WriteLine("出错啦!第 " + idNode.row + " 行，第 " + idNode.col + " 列" + " 变量未被定义");
-                Errors.Add(new ErrorInfo(idNode.row, idNode.col, idNode.Lexeme.Length, ""));
+                Errors.Add(new ErrorInfo(idNode.row, idNode.col, idNode.Lexeme.Length, "变量未被定义"));
                 return false;
             }
             else
@@ -454,7 +454,7 @@ namespace Compiler
                 {
                     //Error
                     //Console.WriteLine("出错啦!第 " + id.row + " 行，第 " + id.col + " 列" + " 变量类型不匹配");
-                    Errors.Add(new ErrorInfo(id.row, id.col, id.Lexeme.Length, ""));
+                    Errors.Add(new ErrorInfo(id.row, id.col, id.Lexeme.Length, "变量类型不匹配"));
                 }
 
             //}
@@ -505,7 +505,7 @@ namespace Compiler
             {
                 //Error
                 //Console.WriteLine("出错啦!第 " + id.row + " 行，第 " + id.col + " 列" + " 变量类型不匹配");
-                Errors.Add(new ErrorInfo(id.row, id.col, 0, ""));
+                Errors.Add(new ErrorInfo(id.row, id.col, 0, "变量类型不匹配"));
             }
         }
 
@@ -704,7 +704,7 @@ namespace Compiler
             {
                 //变量未被定义，报错
                 //Console.WriteLine("出错啦!第 " + n.row + " 行，第 " + n.col + " 列" + " 变量未被定义");
-                Errors.Add(new ErrorInfo(n.row, n.col, n.Lexeme.Length, ""));
+                Errors.Add(new ErrorInfo(n.row, n.col, n.Lexeme.Length, "变量未被定义"));
             }
             else
             {
@@ -712,7 +712,7 @@ namespace Compiler
                 {
                     //变量未被赋值，报错
                     //Console.WriteLine("出错啦!第 " + n.row + " 行，第 " + n.col + " 列" + " 变量未被赋值");
-                    Errors.Add(new ErrorInfo(n.row, n.col, n.Lexeme.Length, ""));
+                    Errors.Add(new ErrorInfo(n.row, n.col, n.Lexeme.Length, "变量未被赋值"));
                 }
                 else
                 {
@@ -729,7 +729,7 @@ namespace Compiler
             {
                 //变量未被定义，报错
                 //Console.WriteLine("出错啦!第 " + n.row + " 行，第 " + n.col + " 列" + " 变量未被定义");
-                Errors.Add(new ErrorInfo(n.row, n.col, n.Lexeme.Length, ""));
+                Errors.Add(new ErrorInfo(n.row, n.col, n.Lexeme.Length, "变量未被定义"));
             }
             else
             {

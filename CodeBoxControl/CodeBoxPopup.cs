@@ -10,7 +10,7 @@ namespace CodeBoxControl
 		// textChange时是否需要处理
 		public bool textChangedEnable = true;
 
-		private PopupControl popup;
+		public PopupControl popup;
 
 		private void InitPopup()
 		{
@@ -31,6 +31,8 @@ namespace CodeBoxControl
 		protected override void OnTextChanged(TextChangedEventArgs e)
 		{
 			base.OnTextChanged(e);
+			Decorations.Clear();
+
 			if (!textChangedEnable) return;
 			if (isPasted) { isPasted = false; return; }
 			foreach (var change in e.Changes)
