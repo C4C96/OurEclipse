@@ -15,3 +15,10 @@ G:\CCProject\C#\OurEclipse\ConsoleApp1\obj\Debug\RE2DFA.csprojResolveAssemblyRef
 G:\CCProject\C#\OurEclipse\ConsoleApp1\obj\Debug\RE2DFA.csproj.CoreCompileInputs.cache
 G:\CCProject\C#\OurEclipse\ConsoleApp1\obj\Debug\RE2DFA.exe
 G:\CCProject\C#\OurEclipse\ConsoleApp1\obj\Debug\RE2DFA.pdb
+C:\Users\huishi\Source\Repos\OurEclipse2\ConsoleApp1\bin\Debug\RE2DFA.exe.config
+C:\Users\huishi\Source\Repos\OurEclipse2\ConsoleApp1\bin\Debug\RE2DFA.exe
+C:\Users\huishi\Source\Repos\OurEclipse2\ConsoleApp1\bin\Debug\RE2DFA.pdb
+C:\Users\huishi\Source\Repos\OurEclipse2\ConsoleApp1\obj\Debug\RE2DFA.csprojAssemblyReference.cache
+C:\Users\huishi\Source\Repos\OurEclipse2\ConsoleApp1\obj\Debug\RE2DFA.csproj.CoreCompileInputs.cache
+C:\Users\huishi\Source\Repos\OurEclipse2\ConsoleApp1\obj\Debug\RE2DFA.exe
+C:\Users\huishi\Source\Repos\OurEclipse2\ConsoleApp1\obj\Debug\RE2DFA.pdb

@@ -17,3 +17,16 @@ G:\CCProject\C#\OurEclipse\Compiler\obj\Debug\Compiler.csproj.CoreCompileInputs.
 G:\CCProject\C#\OurEclipse\Compiler\obj\Debug\Compiler.csproj.CopyComplete
 G:\CCProject\C#\OurEclipse\Compiler\obj\Debug\Compiler.dll
 G:\CCProject\C#\OurEclipse\Compiler\obj\Debug\Compiler.pdb
+C:\Users\huishi\Source\Repos\OurEclipse2\Compiler\bin\Debug\Compiler.dll
+C:\Users\huishi\Source\Repos\OurEclipse2\Compiler\bin\Debug\Compiler.pdb
+C:\Users\huishi\Source\Repos\OurEclipse2\Compiler\bin\Debug\Lexical_Analyzer.exe
+C:\Users\huishi\Source\Repos\OurEclipse2\Compiler\bin\Debug\RE2DFA.exe
+C:\Users\huishi\Source\Repos\OurEclipse2\Compiler\bin\Debug\RE2DFA.pdb
+C:\Users\huishi\Source\Repos\OurEclipse2\Compiler\bin\Debug\RE2DFA.exe.config
+C:\Users\huishi\Source\Repos\OurEclipse2\Compiler\bin\Debug\Lexical_Analyzer.pdb
+C:\Users\huishi\Source\Repos\OurEclipse2\Compiler\bin\Debug\Lexical_Analyzer.exe.config
+C:\Users\huishi\Source\Repos\OurEclipse2\Compiler\obj\Debug\Compiler.csprojAssemblyReference.cache
+C:\Users\huishi\Source\Repos\OurEclipse2\Compiler\obj\Debug\Compiler.csproj.CoreCompileInputs.cache
+C:\Users\huishi\Source\Repos\OurEclipse2\Compiler\obj\Debug\Compiler.csproj.CopyComplete
+C:\Users\huishi\Source\Repos\OurEclipse2\Compiler\obj\Debug\Compiler.dll
+C:\Users\huishi\Source\Repos\OurEclipse2\Compiler\obj\Debug\Compiler.pdb

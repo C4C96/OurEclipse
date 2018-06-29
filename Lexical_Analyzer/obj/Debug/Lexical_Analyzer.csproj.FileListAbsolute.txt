@@ -27,3 +27,14 @@ G:\CCProject\C#\OurEclipse\Lexical_Analyzer\obj\Debug\Lexical_Analyzer.csproj.Co
 G:\CCProject\C#\OurEclipse\Lexical_Analyzer\obj\Debug\Lexical_Analyzer.csproj.CopyComplete
 G:\CCProject\C#\OurEclipse\Lexical_Analyzer\obj\Debug\Lexical_Analyzer.exe
 G:\CCProject\C#\OurEclipse\Lexical_Analyzer\obj\Debug\Lexical_Analyzer.pdb
+C:\Users\huishi\Source\Repos\OurEclipse2\Lexical_Analyzer\bin\Debug\Lexical_Analyzer.exe.config
+C:\Users\huishi\Source\Repos\OurEclipse2\Lexical_Analyzer\bin\Debug\Lexical_Analyzer.exe
+C:\Users\huishi\Source\Repos\OurEclipse2\Lexical_Analyzer\bin\Debug\Lexical_Analyzer.pdb
+C:\Users\huishi\Source\Repos\OurEclipse2\Lexical_Analyzer\bin\Debug\RE2DFA.exe
+C:\Users\huishi\Source\Repos\OurEclipse2\Lexical_Analyzer\bin\Debug\RE2DFA.pdb
+C:\Users\huishi\Source\Repos\OurEclipse2\Lexical_Analyzer\bin\Debug\RE2DFA.exe.config
+C:\Users\huishi\Source\Repos\OurEclipse2\Lexical_Analyzer\obj\Debug\Lexical_Analyzer.csprojAssemblyReference.cache
+C:\Users\huishi\Source\Repos\OurEclipse2\Lexical_Analyzer\obj\Debug\Lexical_Analyzer.csproj.CoreCompileInputs.cache
+C:\Users\huishi\Source\Repos\OurEclipse2\Lexical_Analyzer\obj\Debug\Lexical_Analyzer.csproj.CopyComplete
+C:\Users\huishi\Source\Repos\OurEclipse2\Lexical_Analyzer\obj\Debug\Lexical_Analyzer.exe
+C:\Users\huishi\Source\Repos\OurEclipse2\Lexical_Analyzer\obj\Debug\Lexical_Analyzer.pdb

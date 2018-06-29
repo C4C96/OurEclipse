@@ -6,7 +6,7 @@ using System.IO;
 using System.Text;
 using System.Windows;
 using System.Windows.Media;
-
+//save the xaml docutment
 namespace OurEclipse
 {
 	public partial class MainWindow

@@ -5,11 +5,11 @@
 		/// <summary>
 		/// 词法所需的.rules文件路径
 		/// </summary>
-		public static string RULE_PATH = @"G:\CCProject\C#\OurEclipse\LexicalRules.rules";
+		public static string RULE_PATH = @"C:\Users\huishi\source\repos\OurEclipse2\LexicalRules.rules";
 
 		/// <summary>
 		/// 产生式的文件路径
 		/// </summary>
-		public static string CFG_PATH = @"G:\CCProject\C#\OurEclipse\1.txt";
+		public static string CFG_PATH = @"C:\Users\huishi\source\repos\OurEclipse2\1.txt";
 	}
 }
